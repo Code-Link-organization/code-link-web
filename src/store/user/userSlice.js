@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logIn } from './logInActions';
+import { logOut } from './logOutAction';
 import { signUp } from './signUpAction';
 import { verifyAction } from './verifyAction';
 
@@ -39,17 +40,13 @@ const userSlice=createSlice({
         },
 
         [logIn.fulfilled]:(state,action)=>{
-            console.log('login')
             state.loading=false;
             state.error=null;
             state.user=action.payload.data;
             if(action.payload.data.user['email_verified_at']){
                  state.verified=true;
-                  }
-
-
+                                                             }
             localStorage.setItem('user',JSON.stringify(action.payload.data))
-            localStorage.setItem('verified',JSON.stringify(state.verified))
         },     
         [logIn.rejected]:(state,action)=>{
             state.loading=false;
@@ -65,11 +62,27 @@ const userSlice=createSlice({
             state.error=action.payload;
             state.loading=false;
         },
-        [verifyAction.fulfilled]:(state)=>{
+        [verifyAction.fulfilled]:(state,action)=>{
             state.verified=true;
+            state.user=action.payload.user
             state.loading=false;
-            state.error=null;            
-        }
+            state.error=null;    
+            localStorage.setItem('user',JSON.stringify(action.payload.user))     
+            console.log(action.payload.user)   
+        },
+
+
+        //logout
+        [logOut.fulfilled]:(state)=>{
+            console.log('hello')
+            state.loading=false;
+            state.error=null;
+            state.verified=false;
+            state.user=null
+            localStorage.clear()
+        },
+
+
             
     },
             //set errors to null
@@ -77,10 +90,18 @@ const userSlice=createSlice({
         errorsToNull:(state)=>{
 
            state.error=null
+        },
+
+        setSavedUser:(state,action)=>{
+            state.user=action.payload
+                        if(action.payload['email_verified_at']){
+                 state.verified=true;
+                                                             }
+            
         }
        }
 
 })
 
 export const userReducer=userSlice.reducer;
-export const {errorsToNull}=userSlice.actions;
+export const {errorsToNull,setSavedUser}=userSlice.actions;

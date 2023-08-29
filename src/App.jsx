@@ -2,16 +2,19 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import StartPageHome from './Components/StartPage/StartPageHome'
 import SignUp from './Components/Forms/SignUp'
 import SignIn from './Components/Forms/SignIn'
 import ForgetPassword from './Components/Forms/ForgetPassword'
-import Home from "./Pages/Home";
 import Verification from './Components/StartPage/Verification'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setSavedUser } from "./store/user/userSlice";
+import Home from "./Pages/Home/Home";
+import Layout from "./Protected/Layout";
 const router=createBrowserRouter(
 [{
   path:'/',
-  element:<StartPageHome/>,
+  element:<Layout/>,
   children:[
     {
       path:'signup',
@@ -28,27 +31,27 @@ const router=createBrowserRouter(
     {
       path:'verification',
       element:<Verification/>
+    },
+    
+
+        {
+          path:'home',
+          element:<Home/>
+        }
+      ]
     }
   ]
 
-},
-{
-  path:'/home',
-  element:<Home/>
-}
-
-]
 )
-
+const userLogged=JSON.parse(localStorage.getItem('user'))
 function App() {
-
-
-  // const userData=useSelector(state=>state.user)
-  // const navigate=useNavigate()
-  // if(userData.user && !userData.verified){
-  //   console.log(userData.user)
-  //       navigate('/verification')
-  // }
+  const dispatch=useDispatch()
+   useEffect(()=>{
+    if(userLogged){
+      
+    dispatch(setSavedUser(userLogged))
+    }
+   },[])
   return (
   <RouterProvider router={router}/>
   )

@@ -17,7 +17,6 @@ export const signUp = createAsyncThunk(
       body:formData
       });
       const resData=await res.json()
-      console.log(resData.data?resData.data:resData)
      if(resData.errors && !resData.result){
       throw resData.errors
      }

@@ -16,15 +16,14 @@ export const verifyAction = createAsyncThunk(
       },
       body:userdata
       });
-      const data=await res.json()
-      console.log(data)
-     if(data.errors && !data.result){
-      console.log('error')
-      throw data.errors
+      const resData=await res.json()
+     if(resData.errors && !resData.result){
+      throw resData.errors
      }
-      return data
+      return resData.data
     }
     catch(error){
+      console.log(error)
             return rejectWithValue(error)
 
     }

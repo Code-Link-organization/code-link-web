@@ -1,4 +1,4 @@
-import { toFormData } from "axios"
+import { toFormData } from "../../Functions/toFormData"
 import { useState } from "react"
 import OTPInput from "react-otp-input"
 import { useDispatch, useSelector } from "react-redux"
@@ -23,7 +23,7 @@ function Verification() {
     const dispatch=useDispatch()
     const submitOtp=(e)=>{
         e.preventDefault()
-        dispatch(verifyAction(toFormData([{name:'email',value:user.email},{name:'code',value:otp}])))
+        dispatch(verifyAction(toFormData([{name:'email',value:user&&user.email},{name:'code',value:otp}])))
     }
   return (
     <div className="flex flex-col gap-8">
@@ -43,6 +43,7 @@ function Verification() {
     <button type="submit" className="btn mx-auto">Submit</button>
        </form>
        <p className="text-xl font-normal">If you didn’t receive any code, {loading?'loading...':<button onClick={resend} className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend</button>}</p>
+    {resendError &&<p>{resendError}</p>}
     </div>
   )
 }
