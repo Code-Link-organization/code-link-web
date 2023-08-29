@@ -3,18 +3,18 @@ import { api } from '../../api';
 
 
 export const verifyAction = createAsyncThunk(
-  'user/signUp',
+  'user/verifyAction',
   async ( userdata,thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
-      console.log(userdata)
+    console.log(userdata)
     try {
       const res = await fetch(`${api}/user/check-code`,{
         method:'POST',
               headers: {
         "Accept": "application/json",
-        "Authorization":`Bearer ${userdata.token}`,
+        "Authorization":"application/json"
       },
-      body:userdata.formData
+      body:userdata
       });
       const data=await res.json()
       console.log(data)

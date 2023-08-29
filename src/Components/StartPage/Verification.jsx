@@ -1,18 +1,29 @@
+import { toFormData } from "axios"
 import { useState } from "react"
 import OTPInput from "react-otp-input"
 import { useDispatch, useSelector } from "react-redux"
-import { verifyAction } from "../store/user/verifyAction"
+import useFetch from "../../CustomHooks/useFetch"
+import { verifyAction } from "../../store/user/verifyAction"
 
+
+const options={method:'POST',
+            headers:{
+      "Accept":"application/json",
+      "Authorization": "application/json"
+    
+}
+}
 function Verification() {
     const [otp,setOtp]=useState(null)
-    const error=useSelector(state=>state.user.error)
+    const user=useSelector(state=>state.user).user
+    const {fetchApi:resend,error:resendError,loading} =
+    useFetch('http://127.0.0.1:8000/api/user/send-mail',options,[{value:user.email,name:'email'}])
+    const error=user && user.error
     
     const dispatch=useDispatch()
     const submitOtp=(e)=>{
         e.preventDefault()
-        const formData=new FormData()
-        formData.append('code',`${otp}`)
-        dispatch(verifyAction({formData:formData,token:'21|STL90WJxysOsuaakqvy4Wtzyww3lZORMsFAjuEho'}))
+        dispatch(verifyAction(toFormData([{name:'email',value:user.email},{name:'code',value:otp}])))
     }
   return (
     <div className="flex flex-col gap-8">
@@ -31,7 +42,7 @@ function Verification() {
         </div>
     <button type="submit" className="btn mx-auto">Submit</button>
        </form>
-       <p className="text-xl font-normal">If you didn’t receive any code, <button className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend</button></p>
+       <p className="text-xl font-normal">If you didn’t receive any code, {loading?'loading...':<button onClick={resend} className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend</button>}</p>
     </div>
   )
 }

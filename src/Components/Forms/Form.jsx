@@ -7,15 +7,17 @@ import ReactLoading from 'react-loading';
 
 
 function Form({initalValues,submitAction,inputs,children}) {
-     const user=useSelector(state=>state.user) 
-     const dispatch=useDispatch()
-     const [formData,setFormData]=useState(initalValues)
+     const user = useSelector(state=>state.user) 
 
-   const submitFormHandler=(e)=>{
+     const dispatch = useDispatch()
+
+     const [formData,setFormData] = useState(initalValues)
+
+   const submitFormHandler = (e)=>{
     e.preventDefault()
   var formdata = new FormData();
   inputs.map(input=>formdata.append(input.value,formData[input.value]))
-
+   console.log(submitAction)
     dispatch(submitAction(formdata))
   }
   return (

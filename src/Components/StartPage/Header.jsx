@@ -1,7 +1,9 @@
 import logo from '../../assets/images/logo.svg'
 import StartPageNav from './StartPageNav'
 
+
 function Header() {
+
   return (
     <div  className=' py-7 border-b-[1.5px] border-b-[rgba(227, 227, 227, 1)] border-solid'>
      <div className='container flex justify-between items-center'>

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Outlet, useLocation } from "react-router";
+import { useDispatch,useSelector } from "react-redux";
+import { Outlet, useLocation,useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { errorsToNull } from "../../store/user/userSlice";
 import { content } from "./content";
@@ -8,9 +8,20 @@ import Header from "./Header";
 import useChangeContent from "./useChangeContent";
 function StartPageHome() {
   const {currentContent,activeContent}=useChangeContent(content.length)
+  const navigate=useNavigate()
+  const userData=useSelector(state=>state.user);
   const location=useLocation()
   const dispatch=useDispatch()
+ useEffect(()=>{
+  if(userData &&userData.user && userData.verified){
+    navigate('/home')
+  }
+  else if(userData &&userData.user && !userData.verified){
+    navigate('/verification')
+  }
 
+
+ },[userData])
 
   useEffect(()=>{
    dispatch(errorsToNull())

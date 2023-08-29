@@ -3,7 +3,7 @@ import { api } from '../../api';
 
 
 export const logIn = createAsyncThunk(
-  'user/signUp',
+  'user/logIn',
   async (formData, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
 
@@ -17,13 +17,11 @@ export const logIn = createAsyncThunk(
       },
       body:formData
       });
-      const data=await res.json()
-      console.log(data)
-     if(data.errors && !data.result){
-      console.log('error')
-      throw data.errors
+      const resData=await res.json()
+     if(resData.errors && !resData.result){
+      throw resData.errors
      }
-      return data
+      return resData.data
     }
     catch(error){
             return rejectWithValue(error)

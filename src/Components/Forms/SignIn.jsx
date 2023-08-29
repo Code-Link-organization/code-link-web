@@ -1,26 +1,8 @@
-import emailPlaceHolderIcon from "../../assets/images/inputs-placeholder-icons/email.svg";
-import passwordPlaceHolderIcon from "../../assets/images/inputs-placeholder-icons/password.svg";
 import { logIn } from "../../store/user/logInActions";
 import logInImg from '../../assets/images/start-page/logIn.svg'
 import Form from "./Form";
+import { logInInputs as inputs } from "./inputs";
 function SignIn() {
-
-  const inputs=[
-
-    {
-      placeholder:'E-mail',
-      icon:emailPlaceHolderIcon,
-      type:'email',
-      value:'email'
-    },
-    {
-      placeholder:'Password',
-      icon:passwordPlaceHolderIcon,
-      type:'password',
-      value:'password',
-      forgetPassword:true
-    }
-  ]
 
   return (
   <Form inputs={inputs} submitAction={logIn} initalValues={{email:"",password:""}}>

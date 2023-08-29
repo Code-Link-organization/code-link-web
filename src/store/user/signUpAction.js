@@ -5,7 +5,7 @@ export const signUp = createAsyncThunk(
   'user/signUp',
   async (formData, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
-
+  console.log(formData)
 
     try {
       const res = await fetch('http://localhost:8000/api/user/signup',{
@@ -16,16 +16,15 @@ export const signUp = createAsyncThunk(
       },
       body:formData
       });
-      const data=await res.json()
-      console.log(data)
-     if(data.errors && !data.result){
-      console.log('error')
-      throw data.errors
+      const resData=await res.json()
+      console.log(resData.data?resData.data:resData)
+     if(resData.errors && !resData.result){
+      throw resData.errors
      }
-      return data
+      return resData.data
     }
     catch(error){
-            return rejectWithValue(error)
+      return rejectWithValue(error)
 
     }
   }

@@ -6,7 +6,8 @@ import StartPageHome from './Components/StartPage/StartPageHome'
 import SignUp from './Components/Forms/SignUp'
 import SignIn from './Components/Forms/SignIn'
 import ForgetPassword from './Components/Forms/ForgetPassword'
-
+import Home from "./Pages/Home";
+import Verification from './Components/StartPage/Verification'
 const router=createBrowserRouter(
 [{
   path:'/',
@@ -23,10 +24,20 @@ const router=createBrowserRouter(
     {
       path:'signin',
       element:<SignIn/> 
+    },
+    {
+      path:'verification',
+      element:<Verification/>
     }
   ]
 
-}]
+},
+{
+  path:'/home',
+  element:<Home/>
+}
+
+]
 )
 
 function App() {

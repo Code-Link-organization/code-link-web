@@ -24,8 +24,8 @@ const userSlice=createSlice({
         [signUp.fulfilled]:(state,action)=>{
             state.loading=false;
             state.error=null;
-            state.user=action.payload.data;
-            localStorage.setItem('user',JSON.stringify(action.payload.data))
+            state.user=action.payload.user
+            localStorage.setItem('user',JSON.stringify(action.payload.user))
         },     
         [signUp.rejected]:(state,action)=>{
             state.loading=false;
@@ -39,6 +39,7 @@ const userSlice=createSlice({
         },
 
         [logIn.fulfilled]:(state,action)=>{
+            console.log('login')
             state.loading=false;
             state.error=null;
             state.user=action.payload.data;

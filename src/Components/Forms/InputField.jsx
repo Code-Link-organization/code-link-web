@@ -13,8 +13,8 @@ function InputField({formData,icon,placeholder,setFormData,value,type,forgetPass
   }
   return (
    <div>
-                <div className="input-form  ">
-          <input type={type} placeholder={placeholder} name={value} className=" input-field" onChange={changeValueHandler} />
+                <div className="input-form bg-white  ">
+          <input type={type} placeholder={placeholder} name={value} className=" input-field pl-2" onChange={changeValueHandler} />
           <img
             src={icon}
             className="transition-all duration-200 ease-in  absolute left-4 top-1/2 -translate-y-1/2"

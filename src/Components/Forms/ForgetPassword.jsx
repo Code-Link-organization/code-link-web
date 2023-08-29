@@ -1,15 +1,7 @@
 import forget from '../../assets/images/start-page/Group 1.svg'
-import emailPlaceHolderIcon from '../../assets/images/inputs-placeholder-icons/password.svg'
 import Form from './Form'
+import { forgetPasswordInputs as inputs } from './inputs'
 function ForgetPassword() {
-  const inputs=[
-           {
-      placeholder:'E-mail',
-      icon:emailPlaceHolderIcon,
-      type:'email',
-      value:'email'
-    }
-  ]
   return (
     <div>
 
