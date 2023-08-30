@@ -32,26 +32,27 @@ const router=createBrowserRouter(
       path:'verification',
       element:<Verification/>
     },
-    
-
-        {
-          path:'home',
-          element:<Home/>
-        }
+    {
+      index:true,
+      path:'home',
+      element:<Home/>
+    }
       ]
     }
   ]
 
 )
-const userLogged=JSON.parse(localStorage.getItem('user'))
 function App() {
   const dispatch=useDispatch()
    useEffect(()=>{
-    if(userLogged){
-      
-    dispatch(setSavedUser(userLogged))
+    const userLogged =localStorage.getItem('user')
+    if(userLogged){  
+
+    dispatch(setSavedUser(JSON.parse(userLogged)))
     }
    },[])
+
+   
   return (
   <RouterProvider router={router}/>
   )

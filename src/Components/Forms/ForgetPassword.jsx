@@ -1,9 +1,10 @@
 import forget from '../../assets/images/start-page/Group 1.svg'
+import NoRequire from '../../Protected/NoRequire'
 import Form from './Form'
 import { forgetPasswordInputs as inputs } from './inputs'
 function ForgetPassword() {
   return (
-    <div>
+    <NoRequire>
 
     <Form inputs={inputs}>
 
@@ -15,7 +16,7 @@ function ForgetPassword() {
       </div>
 
     </Form>
-    </div>
+    </NoRequire>
   )
 }
 

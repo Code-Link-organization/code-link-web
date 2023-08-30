@@ -42,12 +42,13 @@ const userSlice=createSlice({
         [logIn.fulfilled]:(state,action)=>{
             state.loading=false;
             state.error=null;
-            state.user=action.payload.data;
-            if(action.payload.data.user['email_verified_at']){
+            state.user=action.payload.user;
+            if(action.payload.user['email_verified_at']){
                  state.verified=true;
                                                              }
-            localStorage.setItem('user',JSON.stringify(action.payload.data))
-        },     
+                                                             
+            localStorage.setItem('user',JSON.stringify(action.payload.user))
+              },     
         [logIn.rejected]:(state,action)=>{
             state.loading=false;
             state.error=action.payload
