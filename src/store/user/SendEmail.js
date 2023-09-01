@@ -1,13 +1,15 @@
 import {  createAsyncThunk } from '@reduxjs/toolkit';
+import { api } from '../../api';
 
 
-export const signUp = createAsyncThunk(
-  'user/signUp',
+export const sendEmail = createAsyncThunk(
+  'user/sendEmail',
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
 
+
     try {
-      const res = await fetch('http://localhost:8000/api/user/signup',{
+      const res = await fetch(`${api}/user/send-mail`,{
         method:'POST',
               headers: {
         "Accept": "application/json",
@@ -17,12 +19,12 @@ export const signUp = createAsyncThunk(
       });
       const resData=await res.json()
      if(resData.errors && !resData.result){
-      throw resData.errors
+      throw resData.message
      }
-      return resData.data
+      return {user:resData.data.user,forgetPassword:data.forgetPassword}
     }
     catch(error){
-      return rejectWithValue(error)
+            return rejectWithValue(error)
 
     }
   }

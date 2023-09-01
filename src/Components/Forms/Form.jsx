@@ -6,7 +6,7 @@ import InputField from "./InputField"
 import ReactLoading from 'react-loading';
 
 
-function Form({initalValues,submitAction,inputs,children}) {
+function Form({initalValues,submitAction,inputs,children,type,token}) {
      const user = useSelector(state=>state.user) 
 
      const dispatch = useDispatch()
@@ -15,10 +15,9 @@ function Form({initalValues,submitAction,inputs,children}) {
 
    const submitFormHandler = (e)=>{
     e.preventDefault()
-  var formdata = new FormData();
-  inputs.map(input=>formdata.append(input.value,formData[input.value]))
-   console.log(submitAction)
-    dispatch(submitAction(formdata))
+   var formdata = new FormData();
+   inputs.map(input=>formdata.append(input.value,formData[input.value]))
+   dispatch(submitAction({formData:formdata,token:token?token:null}))
   }
   return (
         <div className="w-[498px] mx-auto py-8">
@@ -28,7 +27,7 @@ function Form({initalValues,submitAction,inputs,children}) {
 
       {user.loading?	<ReactLoading className="mx-auto" type={'spin'} color={"#D9C6A4"} height={50} width={50} />:
        <button type="submit" className="btn w-fit mx-auto ">
-          Sign Up
+          {type}
         </button>}
       </form>
     </div>

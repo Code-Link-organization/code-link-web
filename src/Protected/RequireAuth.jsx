@@ -8,6 +8,8 @@ function RequireAuth({children}) {
     if(!userData.user && !userData.verified  && !localStorage.getItem('user')){
         return  <Navigate to="/" replace />;
     }
+
+    
       return children
 }
 

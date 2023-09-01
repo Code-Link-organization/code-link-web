@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logIn } from './logInActions';
 import { logOut } from './logOutAction';
+import { resetPassword } from './resetPasswordAction';
+import { sendEmail } from './SendEmail';
 import { signUp } from './signUpAction';
 import { verifyAction } from './verifyAction';
 
@@ -8,7 +10,9 @@ const initialState={
         user:null,
         error:null,
         loading:false,
-        verified:false
+        verified:false,
+    
+        
     
     }
 const userSlice=createSlice({
@@ -52,6 +56,7 @@ const userSlice=createSlice({
         [logIn.rejected]:(state,action)=>{
             state.loading=false;
             state.error=action.payload
+            console.log(action.payload)
         },
         
         //verify
@@ -67,21 +72,54 @@ const userSlice=createSlice({
             state.verified=true;
             state.user=action.payload.user
             state.loading=false;
-            state.error=null;    
+            state.error=null;
+            if(state.forgetPassword===false)    
             localStorage.setItem('user',JSON.stringify(action.payload.user))     
-            console.log(action.payload.user)   
         },
 
 
         //logout
         [logOut.fulfilled]:(state)=>{
-            console.log('hello')
             state.loading=false;
             state.error=null;
             state.verified=false;
-            state.user=null
+            state.user=null;
+            state.isLoggedIn=false
             localStorage.clear()
         },
+
+        //send Email
+        [sendEmail.pending]:(state)=>{
+         state.error=null;
+         state.loading=true
+        },
+        [sendEmail.rejected]:(state,action)=>{
+          state.error={email:[action.payload]}
+          state.loading=false
+        },
+        [sendEmail.fulfilled]:(state,action)=>{
+            state.loading=false;
+            state.error=null;
+            state.user=action.payload.user;
+            if(action.payload.forgetPassword){
+                state.forgetPassword=true
+            }
+        },
+        [resetPassword.pending]:(state)=>{
+          state.loading=true;
+          state.error=null;
+        },
+        [resetPassword.rejected]:(state,action)=>{
+            state.error=action.payload;
+            state.loading=false
+
+        },
+        [resetPassword.fulfilled]:(state)=>{
+            state.forgetPassword=false;
+            state.loading=false;
+            localStorage.setItem('user',JSON.stringify(state.user))
+
+        }
 
 
             
@@ -97,6 +135,7 @@ const userSlice=createSlice({
             state.user=action.payload
                         if(action.payload['email_verified_at']){
                  state.verified=true;
+                 state.isLoggedIn=true;
                                                              }
             
         }

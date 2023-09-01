@@ -7,7 +7,7 @@ function SignIn() {
 
   return (
    <NoRequire>
-      <Form inputs={inputs} submitAction={logIn} initalValues={{email:"",password:""}}>
+      <Form inputs={inputs} submitAction={logIn} initalValues={{email:"",password:""}} type='Log In'>
     <img src={logInImg} className='mx-auto' alt='log-in img'/>
       <h2 className=" text-1xl font-medium text-start">
         Welcome to our community!

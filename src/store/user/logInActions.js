@@ -4,7 +4,7 @@ import { api } from '../../api';
 
 export const logIn = createAsyncThunk(
   'user/logIn',
-  async (formData, thunkAPI) => {
+  async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
 
 
@@ -15,7 +15,7 @@ export const logIn = createAsyncThunk(
         "Accept": "application/json",
         "Authorization":"application/json",
       },
-      body:formData
+      body:data.formData
       });
       const resData=await res.json()
      if(resData.errors && !resData.result){

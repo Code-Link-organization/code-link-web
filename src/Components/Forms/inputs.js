@@ -58,3 +58,17 @@ export const signUpInputs=[
       value:'email'
     }
   ]
+
+  export const resetPasswordInputs=[
+        {
+      placeholder:'Password',
+      icon:passwordPlaceHolderIcon,
+      type:'password',
+      value:'password'
+    },    {
+      placeholder:'Confirm Password',
+      icon:passwordPlaceHolderIcon,
+      type:'password',
+      value:'password_confirmation'
+    }
+  ]  

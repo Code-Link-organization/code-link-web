@@ -2,30 +2,31 @@ import { toFormData } from "../../Functions/toFormData"
 import { useState } from "react"
 import OTPInput from "react-otp-input"
 import { useDispatch, useSelector } from "react-redux"
-import useFetch from "../../CustomHooks/useFetch"
 import { verifyAction } from "../../store/user/verifyAction"
 import NoRequire from "../../Protected/NoRequire"
+import { sendEmail } from "../../store/user/SendEmail"
 
 
-const options={method:'POST',
-            headers:{
-      "Accept":"application/json",
-      "Authorization": "application/json"
-    
-}
-}
+
+
 function Verification() {
     const [otp,setOtp]=useState(null)
-    const user=useSelector(state=>state.user).user
-    const {fetchApi:resend,error:resendError,loading} =
-    useFetch('http://127.0.0.1:8000/api/user/send-mail',options,[{value:user.email,name:'email'}])
-    const error=user && user.error
+    const userData=useSelector(state=>state.user).user
     
     const dispatch=useDispatch()
+
+    //submit otp
     const submitOtp=(e)=>{
         e.preventDefault()
-        dispatch(verifyAction(toFormData([{name:'email',value:user&&user.email},{name:'code',value:otp}])))
+        dispatch(verifyAction(toFormData([{name:'email',value:userData.email},{name:'code',value:otp}])))
     }
+
+   //resend code
+    
+    const resendCode=()=>{
+      dispatch(sendEmail({formData:toFormData([{name:'email',value:userData.email}])}))
+    }
+
   return (
   <NoRequire>
         <div className="flex flex-col gap-8">
@@ -40,12 +41,14 @@ function Verification() {
       shouldAutoFocus={true}
       containerStyle='otp-container'
     />
-    {error &&error['code'] && <p className="text-center text-red-700 font-medium my-4">{error['code']}</p>}
+    {userData.error && <p className="text-center text-red-700 font-medium my-4">{userData.error['code']}</p>}
         </div>
     <button type="submit" className="btn mx-auto">Submit</button>
        </form>
-       <p className="text-xl font-normal">If you didn’t receive any code, {loading?'loading...':<button onClick={resend} className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend</button>}</p>
-    {resendError &&<p>{resendError}</p>}
+       <p className="text-xl font-normal">If you didn’t receive any code, {userData.loading?'loading...':
+       <button onClick={()=>{resendCode()}}
+        className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend
+        </button>}</p>
     </div>
   </NoRequire>
   )

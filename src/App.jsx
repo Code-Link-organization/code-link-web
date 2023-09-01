@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setSavedUser } from "./store/user/userSlice";
 import Home from "./Pages/Home/Home";
 import Layout from "./Protected/Layout";
+import ResetPassword from "./Components/Forms/ResetPassword";
 const router=createBrowserRouter(
 [{
   path:'/',
@@ -23,6 +24,10 @@ const router=createBrowserRouter(
     {
       path:'forgetpassword',
       element:<ForgetPassword/>
+    },
+    {
+      path:'resetpassword',
+      element:<ResetPassword/>
     },
     {
       path:'signin',
