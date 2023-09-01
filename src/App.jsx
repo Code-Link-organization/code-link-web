@@ -12,50 +12,58 @@ import { setSavedUser } from "./store/user/userSlice";
 import Home from "./Pages/Home/Home";
 import Layout from "./Protected/Layout";
 import ResetPassword from "./Components/Forms/ResetPassword";
-const router=createBrowserRouter(
-[{
-  path:'/',
-  element:<Layout/>,
-  children:[
-    {
-      path:'signup',
-      element:<SignUp/>
-    },
-    {
-      path:'forgetpassword',
-      element:<ForgetPassword/>
-    },
-    {
-      path:'resetpassword',
-      element:<ResetPassword/>
-    },
-    {
-      path:'signin',
-      element:<SignIn/> 
-    },
-    {
-      path:'verification',
-      element:<Verification/>
-    },
-    {
-      index:true,
-      path:'home',
-      element:<Home/>
-    }
-      ]
-    }
-  ]
+import Chat from "./Pages/Chat/Chat";
+// const router=createBrowserRouter(
+// [{
+//   path:'/',
+//   element:<Layout/>,
+//   children:[
+//     {
+//       path:'signup',
+//       element:<SignUp/>
+//     },
+//     {
+//       path:'forgetpassword',
+//       element:<ForgetPassword/>
+//     },
+//     {
+//       path:'resetpassword',
+//       element:<ResetPassword/>
+//     },
+//     {
+//       path:'signin',
+//       element:<SignIn/> 
+//     },
+//     {
+//       path:'verification',
+//       element:<Verification/>
+//     },
+//     {
+//       index:true,
+//       path:'home',
+//       element:<Home/>
+//     }
+//       ]
+//     }
+//   ]
 
-)
+// )
+
+const router=createBrowserRouter([
+  {
+    path:'/',
+    element:<Chat/>
+  }
+])
 function App() {
-  const dispatch=useDispatch()
-   useEffect(()=>{
-    const userLogged =localStorage.getItem('user')
-    if(userLogged){  
+  // const dispatch=useDispatch()
+  //  useEffect(()=>{
+  //   const userLogged =localStorage.getItem('user')
+  //   if(userLogged){  
 
-    dispatch(setSavedUser(JSON.parse(userLogged)))
-    }
-   },[])
+  //   dispatch(setSavedUser(JSON.parse(userLogged)))
+  //   }
+  //  },[])
 
    
   return (

@@ -22,6 +22,11 @@ font-family: 'Mulish', sans-serif;
   .input-form{
     @apply shadow-inputshadow  h-[60px]  rounded-2xl  ps-16 relative
   }
+  .chatlist-btn{
+    @apply text-[15px] text-customgray border-b-2 border-customgray pb-2 leading-4 transition-all
+     duration-300 hover:text-customblack hover:border-b-customblack
+  }
+  
      
   
   .input-field{
@@ -47,4 +52,9 @@ font-family: 'Mulish', sans-serif;
 
 body{
   background-color: rgba(252, 250, 248, 1);
+}
+
+.shadow{
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 }
