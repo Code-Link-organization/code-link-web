@@ -1,10 +1,10 @@
 import ChatListItem from "./ChatListItem";
-import img from '../../../assets/images/chat/Ellipse 36.svg'
 
-import { useState } from "react";
 import SearchField from "./SearchField";
 function ChatList() {
-    const [searchValue,setSearch]=useState({search:''})
+    // const [searchValue,setSearch]=useState({search:''})
+
+
     return (
         <div className="w-1/4 py-6 px-2 bg-custombg shadow-[box-shadow:0px_4px_4px_0px_rgba(0,0,0,0.25)] shadow">
             <SearchField/>
@@ -13,11 +13,11 @@ function ChatList() {
                 <button className="chatlist-btn">Friends</button>
             </div>
             <div className="flex flex-col gap-7 py-8">
-                <ChatListItem chatinfo={{imgPath:img,lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
-                <ChatListItem chatinfo={{imgPath:img,lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
-                <ChatListItem chatinfo={{imgPath:img,lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
-                <ChatListItem chatinfo={{imgPath:img,lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
-                <ChatListItem chatinfo={{imgPath:img,lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
+                <ChatListItem chatinfo={{lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
+                <ChatListItem chatinfo={{lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
+                <ChatListItem chatinfo={{lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
+                <ChatListItem chatinfo={{lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
+                <ChatListItem chatinfo={{lastMsg:{content:'Hi Emilia',date:'12:05Am'},name:'Mateo Lincoln',notSeen:1}}/>
 
 
             </div>

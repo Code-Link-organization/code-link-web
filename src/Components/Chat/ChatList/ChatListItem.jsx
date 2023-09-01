@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import img from '../../assets/images/chat/Ellipse 36.svg'
-import active from '../../assets/images/chat/icons8-dot-30 1.svg'
+import img from '../../../assets/images/chat/Ellipse 36.svg'
+import active from '../../../assets/images/chat/icons8-dot-30 1.svg'
 function ChatListItem({chatinfo}) {
   return (
     <div className='flex justify-between items-center px-2 '>
