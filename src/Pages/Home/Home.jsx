@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from "react-redux"
-import RequireAuth from "../../Protected/RequireAuth"
-import { logOut } from "../../store/user/logOutAction"
-
+import FriendsList from '../../Components/Home/FriendsList/FriendsList'
+import HomeContent from '../../Components/Home/HomeContent/HomeContent'
+import Header from '../../Components/StartPage/Header'
 function Home() {
-  const dispatch=useDispatch()
-  const userData=useSelector(state=>state.user)
+
   return (
-    <RequireAuth>
-      Home
-      <button onClick={()=>dispatch(logOut(userData.user.token))}>Log out</button>
-    </RequireAuth>
+  <>
+  <Header></Header>
+  <div className='flex'>
+    <FriendsList/>
+    <HomeContent />
+  </div>
+  </>
   )
 }
 

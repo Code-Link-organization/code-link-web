@@ -52,7 +52,7 @@ import Chat from "./Pages/Chat/Chat";
 const router=createBrowserRouter([
   {
     path:'/',
-    element:<Chat/>
+    element:<Home/>
   }
 ])
 function App() {
