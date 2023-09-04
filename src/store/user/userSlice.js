@@ -127,7 +127,9 @@ const userSlice=createSlice({
             //set errors to null
        reducers:{
         errorsToNull:(state)=>{
-
+          if(state.error &&state.error['code']){
+            return; 
+          }
            state.error=null
         },
 

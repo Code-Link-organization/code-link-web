@@ -11,28 +11,31 @@ import { sendEmail } from "../../store/user/SendEmail"
 
 function Verification() {
     const [otp,setOtp]=useState(null)
-    const userData=useSelector(state=>state.user).user
+    const userData = useSelector(state=>state.user) 
+        const user=userData.user
+
     
     const dispatch=useDispatch()
 
     //submit otp
     const submitOtp=(e)=>{
         e.preventDefault()
-        dispatch(verifyAction(toFormData([{name:'email',value:userData.email},{name:'code',value:otp}])))
+        dispatch(verifyAction(toFormData([{name:'email',value:user.email},{name:'code',value:otp}])))
     }
 
    //resend code
     
     const resendCode=()=>{
-      dispatch(sendEmail({formData:toFormData([{name:'email',value:userData.email}])}))
+      dispatch(sendEmail({formData:toFormData([{name:'email',value:user.email}])}))
     }
+    console.log(userData.error?userData.error:"")
 
   return (
   <NoRequire>
         <div className="flex flex-col gap-8">
         <h4 className="text-center text-xl text-[rgba(0,0,0,1)] font-medium">Enter your code here</h4>
        <form className="flex flex-col gap-8 items-center" onSubmit={submitOtp}>
-    <div>
+    <div className="flex justify-center flex-col items-center">
                             <OTPInput
       value={otp}
       onChange={setOtp}
@@ -41,7 +44,7 @@ function Verification() {
       shouldAutoFocus={true}
       containerStyle='otp-container'
     />
-    {userData.error && <p className="text-center text-red-700 font-medium my-4">{userData.error['code']}</p>}
+    { <p className="text-center text-red-700 font-medium my-4">{userData.error?userData.error['code'].join('&'):""} </p>}
         </div>
     <button type="submit" className="btn mx-auto">Submit</button>
        </form>

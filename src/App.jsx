@@ -12,7 +12,6 @@ import { setSavedUser } from "./store/user/userSlice";
 import Home from "./Pages/Home/Home";
 import Layout from "./Protected/Layout";
 import ResetPassword from "./Components/Forms/ResetPassword";
-import Chat from "./Pages/Chat/Chat";
 // const router=createBrowserRouter(
 // [{
 //   path:'/',
@@ -49,12 +48,10 @@ import Chat from "./Pages/Chat/Chat";
 
 // )
 
-const router=createBrowserRouter([
-  {
-    path:'/',
-    element:<Home/>
-  }
-])
+const router=createBrowserRouter([{
+ element:<Home/>,
+ path:'/'
+}])
 function App() {
   // const dispatch=useDispatch()
   //  useEffect(()=>{

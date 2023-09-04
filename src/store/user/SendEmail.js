@@ -18,6 +18,7 @@ export const sendEmail = createAsyncThunk(
       body:data.formData
       });
       const resData=await res.json()
+      console.log(resData)
      if(resData.errors && !resData.result){
       throw resData.message
      }
