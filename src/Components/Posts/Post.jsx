@@ -15,7 +15,7 @@ function Post({post}) {
             <p className='ml-auto'>1h</p>
             
         </header>
-        <img src={`http://localhost:8000/api/${post['image_path']}`} alt='post image' className='w-full' />
+        <img src={postImg} alt='post image' className='w-full' />
         <p className='text-xl text-inter p-4 '>{post.content}</p>
     <div className='flex justify-between px-4 py-4'>
         <p className='flex items-center gap-3'>300<img src={likeIcon}/></p>

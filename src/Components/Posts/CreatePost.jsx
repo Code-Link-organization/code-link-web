@@ -1,28 +1,48 @@
-import { useState } from 'react'
-import EmojisComponent from './EmojisComponent'
-import PostOptions from './PostOptions'
-import UploadImages from './UploadImages'
-function CreatePost() {
-      const [uploadedImage,setUploadedImage]=useState(null)
+import { useState } from 'react';
+import Profileimg from '../../assets/images/posts/Ellipse 25 (1).svg'
+import Modal from 'react-modal';
+import CreatePostModal from './CreatePostModal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    background:'none',
+    border:'none'
+  },
+};
 
 
+const CreatePost=()=> {
+  const [open, setOpen] = useState(false);
+
+  const openModal=()=>{
+    setOpen(true)
+  }
+  const closeModal=()=>{
+    setOpen(false)
+  }
   return (
-    <div className="bg-[rgba(252,250,248,1)]  m-10 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] py-8 px-12 rounded-3xl"  >
-        <h3 className="text-4xl font-bold text-center">Create Post </h3>
-        <div className='w-full bg-white  mx-auto my-2 '>
-          <textarea className='w-full min-h-[200px] resize-none'/>
-          <div className='flex justify-between p-2' >
-         <UploadImages setUploadedImage={setUploadedImage}/>  
-         <EmojisComponent />  
-          </div>
-        </div>
-        <PostOptions uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
-        <div className='flex my-14 ml-auto w-fit space-x-3 text-2xl'>
-          <button>Cancel</button>
-          <button className='dark-btn'>Publish</button>
-        </div>
-
-    </div>
+  <>   <div className='h-[150px] px-16 mb-2  bg-white element-center' onClick={openModal}>
+        <button className="bg-white shadow-[shadow:0px_10px_10px_0px_rgba(218,218,218,0.3)] rounded-full flex justify-between  w-full my-auto  h-[50px]">
+        <p className="text-[rgba(152,150,150,1)] text-roboto text-xl py-2 px-5 my-auto">What’s on your mind?</p>
+        <img src={Profileimg}/>
+    </button>
+  
+   </div>  
+         <Modal
+        isOpen={open}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+     <CreatePostModal closeModal={closeModal}/>
+      </Modal>
+  </>
   )
 }
 

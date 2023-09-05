@@ -64,3 +64,7 @@ body{
 .emojis>div{
   width: 300px;
 }
+
+.ReactModal__Overlay{
+  background-color: rgb(9 9 9 / 75%) !important;
+}

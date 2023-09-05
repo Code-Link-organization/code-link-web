@@ -16,6 +16,7 @@ export default {
     extend: {
             fontFamily: {
         'inter': ['Inter', 'sans-serif'],
+        'roboto':['Roboto', 'sans-serif'],
       },
       colors:{
         'primary':'#D9C6A4',
@@ -23,7 +24,9 @@ export default {
         'secondary':'#FFFFFF',
         'customblack':'rgba(0,0,0,1)',
         'customgray':'rgba(139,139,139,1)',
-        'custombg':'rgba(252,250,248,1)'
+        'custombg':'rgba(252,250,248,1)',
+
+
       },
             boxShadow: {
         'btnshadow': ' 0px 6px 15px 0px rgba(218, 218, 218, 0.5)',
