@@ -19,6 +19,7 @@ export default {
       },
       colors:{
         'primary':'#D9C6A4',
+        'dark-primary':'rgba(200,174,125,1)',
         'secondary':'#FFFFFF',
         'customblack':'rgba(0,0,0,1)',
         'customgray':'rgba(139,139,139,1)',

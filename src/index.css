@@ -26,7 +26,9 @@ font-family: 'Mulish', sans-serif;
     @apply text-[15px] text-customgray border-b-2 border-customgray pb-2 leading-4 transition-all
      duration-300 hover:text-customblack hover:border-b-customblack
   }
-  
+  .dark-btn{
+    @apply bg-dark-primary text-customblack shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] text-2xl rounded-2xl py-1 px-2
+  }
      
   
   .input-field{
@@ -57,4 +59,8 @@ body{
 .shadow{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
+}
+
+.emojis>div{
+  width: 300px;
 }

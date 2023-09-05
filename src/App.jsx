@@ -9,7 +9,7 @@ import Verification from './Components/StartPage/Verification'
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSavedUser } from "./store/user/userSlice";
-import Home from "./Pages/Home/Home";
+import Home, { loader as postsLoader } from "./Pages/Home/Home";
 import Layout from "./Protected/Layout";
 import ResetPassword from "./Components/Forms/ResetPassword";
 // const router=createBrowserRouter(
@@ -50,7 +50,8 @@ import ResetPassword from "./Components/Forms/ResetPassword";
 
 const router=createBrowserRouter([{
  element:<Home/>,
- path:'/'
+ path:'/',
+ loader:postsLoader
 }])
 function App() {
   // const dispatch=useDispatch()

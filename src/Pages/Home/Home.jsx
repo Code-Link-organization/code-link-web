@@ -1,9 +1,8 @@
 import FriendsList from '../../Components/Home/FriendsList/FriendsList'
 import HomeContent from '../../Components/Home/HomeContent/HomeContent'
 import Header from '../../Components/StartPage/Header'
-import RequireAuth from '../../Protected/RequireAuth'
-function Home() {
 
+function Home() {
   return (
   <>
     <Header></Header>
@@ -15,3 +14,16 @@ function Home() {
 }
 
 export default Home
+export async function loader(){
+  const response=await fetch('http://localhost:8000/api/posts',{
+    method:'GET',
+    headers:{
+      "Authorization": "Bearer 18|fsOuawBuMJGRhNxOhZUEDjBGF4hesEK6Y8UNq0pV"
+    }
+  })
+  if(!response.ok){
+   return
+  }
+  const resData=await response.json()
+  return resData.data.posts
+}
