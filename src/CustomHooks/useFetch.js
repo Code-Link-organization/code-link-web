@@ -9,14 +9,17 @@ function useFetch(url,options,data) {
         try{
       const response=await fetch(url,{...options,body:data})
       const resData=await response.json()
-      if(!response.ok) throw(resData.errors)
-      
+      setLoading(false)
+      if(!response.ok){
+        throw (resData.message)
+      }
+      console.log(resData)
       return   resData
         }
-        catch(error){
-          console.log(error)
-            setError('something wrong please try to resend again!')
-          setLoading(false)
+        catch(errors){
+          console.log(errors)
+          setError(errors)
+          return;
 
         }
     }

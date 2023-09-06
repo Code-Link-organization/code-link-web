@@ -1,4 +1,4 @@
-import Post from "./Post"
+import Post from "./Post/Post"
 import {useLoaderData} from 'react-router-dom'
 
 function Posts() {

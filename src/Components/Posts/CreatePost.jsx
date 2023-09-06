@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Profileimg from '../../assets/images/posts/Ellipse 25 (1).svg'
 import Modal from 'react-modal';
-import CreatePostModal from './CreatePostModal';
+import CreatePostModal from './CreatePostModal/CreatePostModal';
 
 const customStyles = {
   content: {

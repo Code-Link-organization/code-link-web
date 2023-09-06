@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import closeIcon from "../../assets/images/chat/icons8-close-50 1.svg";
+import closeIcon from "../../../assets/images/chat/icons8-close-50 1.svg";
 
 function PostOptions({ uploadedImage, setUploadedImage }) {
     const removeImageHandler = () => {
