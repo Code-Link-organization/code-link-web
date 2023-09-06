@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { toFormData } from "../Functions/toFormData"
+const token='19|PFTBIDNwhGkcdFxf7LqQMwc2zyggdbCp9T31HoGz'
 
 function useFetch(url,options,data) {
     const [loading,setLoading]=useState(false)
@@ -7,14 +7,18 @@ function useFetch(url,options,data) {
     const fetchApi=async()=>{
         setLoading(true)
         try{
-      const response=await fetch(url,{...options,body:toFormData(data)})
+      const response=await fetch(url,{...options,body:data})
       const resData=await response.json()
-      console.log(resData,options.body.values())
+      if(!response.ok) throw(resData.errors)
+      
+      return   resData
         }
         catch(error){
+          console.log(error)
             setError('something wrong please try to resend again!')
+          setLoading(false)
+
         }
-        setLoading(false)
     }
   return {fetchApi,error,loading}
 }

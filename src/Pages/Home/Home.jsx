@@ -2,6 +2,7 @@ import FriendsList from '../../Components/Home/FriendsList/FriendsList'
 import HomeContent from '../../Components/Home/HomeContent/HomeContent'
 import Header from '../../Components/StartPage/Header'
 
+
 function Home() {
   return (
   <>
@@ -14,7 +15,7 @@ function Home() {
 }
 
 export default Home
-export async function loader(){
+export  const  loader=async()=>{
   const response=await fetch('http://localhost:8000/api/posts',{
     method:'GET',
     headers:{
@@ -22,8 +23,8 @@ export async function loader(){
     }
   })
   if(!response.ok){
-   return
+   return 0
   }
   const resData=await response.json()
-  return resData.data.posts
+  return resData.data.postData
 }
