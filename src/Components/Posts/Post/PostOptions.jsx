@@ -5,6 +5,8 @@ function PostOptions({ uploadedImage, setUploadedImage }) {
     const removeImageHandler = () => {
         setUploadedImage(null);
     };
+            console.log(typeof uploadedImage)
+
     return (
         <div className="py-5 h-28 flex flex-row-reverse">
             <div className="ml-auto w-fit space-x-3 text-2xl">
@@ -13,8 +15,8 @@ function PostOptions({ uploadedImage, setUploadedImage }) {
             </div>
             {uploadedImage && (
                 <div className="relative my-auto w-24">
-                    <img
-                        src={URL.createObjectURL(uploadedImage)}
+               <img
+                        src={typeof uploadedImage === "string"?uploadedImage:URL.createObjectURL(uploadedImage)}
                         alt="uploaded image"
                         className="w-full h-18"
                     />

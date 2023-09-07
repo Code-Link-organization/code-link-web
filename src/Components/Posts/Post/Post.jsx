@@ -13,7 +13,7 @@ function Post({post}) {
                             <p>{post['user_name']}</p>
             </div>
             <p>{transferDate(post['created_at'])}</p>
-            <EditPost id={post.id}/>
+            <EditPost   post={post}/>
             
         </header>
         {post['image_path'] &&<img src={`http://localhost:8000/${post['image_path']}`} alt='post image' className='w-full' />}

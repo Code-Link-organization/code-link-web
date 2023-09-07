@@ -1,10 +1,10 @@
 import { useState } from "react"
 const token='19|PFTBIDNwhGkcdFxf7LqQMwc2zyggdbCp9T31HoGz'
 
-function useFetch(url,options,data) {
+function useFetch(url,options) {
     const [loading,setLoading]=useState(false)
     const [error,setError]=useState(null)
-    const fetchApi=async()=>{
+    const fetchApi=async(data)=>{
         setLoading(true)
         try{
       const response=await fetch(url,{...options,body:data})

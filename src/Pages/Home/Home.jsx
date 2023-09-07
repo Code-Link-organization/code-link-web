@@ -1,9 +1,21 @@
 import FriendsList from '../../Components/Home/FriendsList/FriendsList'
 import HomeContent from '../../Components/Home/HomeContent/HomeContent'
 import Header from '../../Components/StartPage/Header'
+import {useLoaderData} from 'react-router-dom'
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { setPosts } from '../../store/posts/postsSlice'
 
-
+import Emojis from './Emojis'
 function Home() {
+
+    const posts=useLoaderData()
+
+  const dispatch=useDispatch()
+
+  useEffect(()=>{
+    dispatch(setPosts(posts))
+  },[])
   return (
   <>
     <Header></Header>

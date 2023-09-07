@@ -1,20 +1,7 @@
 import { useState } from 'react';
 import Profileimg from '../../assets/images/posts/Ellipse 25 (1).svg'
-import Modal from 'react-modal';
-import CreatePostModal from './CreatePostModal/CreatePostModal';
+import ModalComponent from './Post/ModalComponent';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    background:'none',
-    border:'none'
-  },
-};
 
 
 const CreatePost=()=> {
@@ -34,14 +21,7 @@ const CreatePost=()=> {
     </button>
   
    </div>  
-         <Modal
-        isOpen={open}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-     <CreatePostModal closeModal={closeModal}/>
-      </Modal>
+ <ModalComponent open={open} closeModal={closeModal}/>
   </>
   )
 }
