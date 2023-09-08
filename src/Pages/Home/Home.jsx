@@ -5,7 +5,7 @@ import {useLoaderData} from 'react-router-dom'
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setPosts } from '../../store/posts/postsSlice'
-
+import RequireAuth from '../../Protected/RequireAuth'
 import Emojis from './Emojis'
 function Home() {
 
@@ -17,12 +17,12 @@ function Home() {
     dispatch(setPosts(posts))
   },[])
   return (
-  <>
+  <RequireAuth>
     <Header></Header>
   <div className='flex'>
     <FriendsList/>
     <HomeContent />
-  </div></>
+  </div></RequireAuth>
   )
 }
 
@@ -31,7 +31,7 @@ export  const  loader=async()=>{
   const response=await fetch('http://localhost:8000/api/posts',{
     method:'GET',
     headers:{
-      "Authorization": "Bearer 18|fsOuawBuMJGRhNxOhZUEDjBGF4hesEK6Y8UNq0pV"
+      "Authorization": "Bearer 35|vwM5NalCjgX4Gz0PHv6kTGvW63lV0SY0lzIfYvOF"
     }
   })
   if(!response.ok){

@@ -3,7 +3,6 @@ import { useState } from "react"
 import OTPInput from "react-otp-input"
 import { useDispatch, useSelector } from "react-redux"
 import { verifyAction } from "../../store/user/verifyAction"
-import NoRequire from "../../Protected/NoRequire"
 import { sendEmail } from "../../store/user/SendEmail"
 
 
@@ -11,7 +10,7 @@ import { sendEmail } from "../../store/user/SendEmail"
 
 function Verification() {
     const [otp,setOtp]=useState(null)
-    const userData = useSelector(state=>state.user) 
+    const userData = useSelector(state=>state.auth) 
         const user=userData.user
 
     
@@ -31,7 +30,7 @@ function Verification() {
     console.log(userData.error?userData.error:"")
 
   return (
-  <NoRequire>
+  <>
         <div className="flex flex-col gap-8">
         <h4 className="text-center text-xl text-[rgba(0,0,0,1)] font-medium">Enter your code here</h4>
        <form className="flex flex-col gap-8 items-center" onSubmit={submitOtp}>
@@ -44,7 +43,7 @@ function Verification() {
       shouldAutoFocus={true}
       containerStyle='otp-container'
     />
-    { <p className="text-center text-red-700 font-medium my-4">{userData.error?userData.error['code'].join('&'):""} </p>}
+    { <p className="text-center text-red-700 font-medium my-4">{user.error&&userData.error.code['']?userData.error['code']:""} </p>}
         </div>
     <button type="submit" className="btn mx-auto">Submit</button>
        </form>
@@ -53,7 +52,7 @@ function Verification() {
         className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend
         </button>}</p>
     </div>
-  </NoRequire>
+  </>
   )
 }
 

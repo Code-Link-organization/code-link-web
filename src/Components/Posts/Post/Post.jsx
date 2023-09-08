@@ -10,7 +10,7 @@ function Post({ post }) {
       <PostHeader post={post} />
       <PostContent post={post} />
       <PostDetails post={post}/>
-      <PostActions post={post} />
+      {/* <PostActions post={post} /> */}
     </div>
   );
 }

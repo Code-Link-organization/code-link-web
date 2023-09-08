@@ -3,10 +3,14 @@ import { useSelector } from 'react-redux';
 import {Navigate} from 'react-router-dom';
 
 function RequireAuth({children}) {
-    const userData=useSelector(state=>state.user)
+    const userData=useSelector(state=>state.auth)
 
-    if(!userData.user && !userData.verified  && !localStorage.getItem('user')){
+    if( !localStorage.getItem('user')&&!userData.user && !userData.user.token  ){
         return  <Navigate to="/" replace />;
+    }
+    if(!localStorage.getItem('user')&&!userData.user && !userData.user.token){
+        return  <Navigate to="/verification" replace />;
+
     }
 
     

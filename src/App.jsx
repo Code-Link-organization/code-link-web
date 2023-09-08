@@ -40,7 +40,9 @@ import ResetPassword from "./Components/Forms/ResetPassword";
 //     {
 //       index:true,
 //       path:'home',
-//       element:<Home/>
+//       element:<Home/>,
+//        loader:postsLoader
+
 //     }
 //       ]
 //     }

@@ -3,7 +3,7 @@ import { api } from '../../api';
 
 
 export const resetPassword = createAsyncThunk(
-  'user/resetPassword',
+  'auth/resetPassword',
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
@@ -16,7 +16,7 @@ export const resetPassword = createAsyncThunk(
       body:data.formData
       });
       const resData=await res.json()
-     if(resData.errors && !resData.result){
+     if(res.ok){
 
       throw resData.errors
      }

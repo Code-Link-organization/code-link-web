@@ -8,15 +8,8 @@ import { toFormData } from '../../../Functions/toFormData';
 import useFetch from '../../../CustomHooks/useFetch';
 import CreatePostModalFooter from './CreatePostModalFooter';
 import { useNavigate } from 'react-router-dom';
-import { loadImageFromURL } from '../../../Functions/loadImageFromUrl';
+import { postOptions as options } from '../../../options'
 
-const options = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Bearer 19|PFTBIDNwhGkcdFxf7LqQMwc2zyggdbCp9T31HoGz',
-  }
-};
 
 function CreatePostModal({ closeModal, editPost, post }) {
   const [uploadedImage, setUploadedImage] = useState(post&&post['image_path'] ?`http://localhost:8000/${post['image_path']}`: null);
@@ -32,17 +25,16 @@ function CreatePostModal({ closeModal, editPost, post }) {
     e.preventDefault();
     let resData;
     if (editPost) {
-            console.log(uploadedImage)
 
       resData = await editPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
     } else {
-      // resData = await createPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
+      resData = await createPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
     }
     if (resData.result && resData.message) {
       setUploadedImage(null);
       setContentValue('');
       closeModal();
-      // navigate(0);
+      navigate(0);
     }
   };
 

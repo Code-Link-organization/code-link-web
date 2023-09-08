@@ -13,7 +13,7 @@ function InputField({
     type,
     forgetPassword,
 }) {
-    const error = useSelector((state) => state.user.error);
+    const error = useSelector((state) => state.auth.error);
     const changeValueHandler = (e) => {
         const newValue = e.target.value;
 

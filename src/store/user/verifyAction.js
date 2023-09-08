@@ -17,7 +17,7 @@ export const verifyAction = createAsyncThunk(
       body:userdata
       });
       const resData=await res.json()
-     if(resData.errors && !resData.result){
+     if(!res.ok){
       throw resData.errors
      }
       return resData.data

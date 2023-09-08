@@ -3,7 +3,7 @@ import { api } from '../../api';
 
 
 export const sendEmail = createAsyncThunk(
-  'user/sendEmail',
+  'auth/sendEmail',
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
 
@@ -18,8 +18,7 @@ export const sendEmail = createAsyncThunk(
       body:data.formData
       });
       const resData=await res.json()
-      console.log(resData)
-     if(resData.errors && !resData.result){
+     if(!res.ok){
       throw resData.message
      }
       return {user:resData.data.user,forgetPassword:data.forgetPassword}

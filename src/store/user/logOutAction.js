@@ -3,7 +3,7 @@ import { api } from '../../api';
 
 
 export const logOut = createAsyncThunk(
-  'user/logOut',
+  'auth/logOut',
   async (token, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
@@ -15,11 +15,10 @@ export const logOut = createAsyncThunk(
       },
       });
       const resData=await res.json()
-     if(resData.errors && !resData.result){
+     if(!res.ok){
 
       throw resData.errors
      }
-     console.log(resData)
       return resData.data
     }
     catch(error){

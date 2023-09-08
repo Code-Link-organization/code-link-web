@@ -10,7 +10,7 @@ import ReactLoading from 'react-loading';
 function ForgetPassword() {
   const [formData,setFormData]=useState({email:'' })
   const dispatch=useDispatch()
-           const user = useSelector(state=>state.user) 
+           const user = useSelector(state=>state.auth) 
 
 
      const submitFormHandler = (e)=>{

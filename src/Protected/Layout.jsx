@@ -3,7 +3,7 @@ import StartPageHome from '../Components/StartPage/StartPageHome';
 import {Outlet,useNavigate} from 'react-router-dom'
 import { useEffect } from 'react';
 function Layout() {
-        const userData=useSelector(state=>state.user)
+        const userData=useSelector(state=>state.auth).user
         const navigate=useNavigate()
    useEffect(()=>{
   if(userData &&userData.user && userData.verified){
@@ -19,7 +19,7 @@ function Layout() {
   return (
 
     <>
-    {userData.user &&userData.verified?<Outlet/>:<StartPageHome/>}
+    {userData &&userData.token?<Outlet/>:<StartPageHome/>}
     
     </>
   )

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Outlet, useLocation } from "react-router";
+import { useDispatch , useSelector} from "react-redux";
+import { Outlet, useLocation,useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { errorsToNull } from "../../store/user/userSlice";
 import { content } from "./content";
@@ -10,11 +10,23 @@ function StartPageHome() {
   const {currentContent,activeContent}=useChangeContent(content.length)
   const location=useLocation()
   const dispatch=useDispatch()
+  const navigate=useNavigate()
+    const userData = useSelector(state=>state.auth) 
 
 
   useEffect(()=>{
    dispatch(errorsToNull())
   },[location])
+   useEffect(()=>{
+    console.log('data')
+    console.log(userData)
+    if(userData.user && userData.user.token ){
+    return  navigate('/home')
+    }
+        if(userData.user ){
+     return navigate('/verification')
+    }
+   },[userData])
 
   return (
    <>

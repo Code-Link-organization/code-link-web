@@ -5,7 +5,7 @@ import {useSelector } from 'react-redux'
 import { resetPassword } from "../../store/user/resetPasswordAction"
 import Home from "../../Pages/Home/Home"
 function ResetPassword() {
-  const userData=useSelector(state=>state.user).user
+  const userData=useSelector(state=>state.auth).user
  if(userData && userData.forgetPassword){
   return (
               <Form inputs={inputs} submitAction={resetPassword} token={userData.token} initalValues={{password:"" , password_confirmation:""}} type='Save'>

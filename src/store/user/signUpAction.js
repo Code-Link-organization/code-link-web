@@ -2,9 +2,10 @@ import {  createAsyncThunk } from '@reduxjs/toolkit';
 
 
 export const signUp = createAsyncThunk(
-  'user/signUp',
+  'auth/signUp',
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
+    console.log(data)
 
     try {
       const res = await fetch('http://localhost:8000/api/user/signup',{
@@ -16,7 +17,7 @@ export const signUp = createAsyncThunk(
       body:data.formData
       });
       const resData=await res.json()
-     if(resData.errors && !resData.result){
+     if(!res.ok){
       throw resData.errors
      }
       return resData.data

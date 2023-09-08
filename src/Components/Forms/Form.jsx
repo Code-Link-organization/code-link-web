@@ -7,7 +7,7 @@ import ReactLoading from 'react-loading';
 
 
 function Form({initalValues,submitAction,inputs,children,type,token}) {
-     const user = useSelector(state=>state.user) 
+     const user = useSelector(state=>state.auth) 
 
      const dispatch = useDispatch()
 
