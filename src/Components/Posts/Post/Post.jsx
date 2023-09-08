@@ -1,4 +1,4 @@
-import PostActions from './PostActions';
+import PostActions from '../Post/PostActions/PostActions';
 import PostContent from './PostContent';
 import PostDetails from './PostDetails';
 import PostHeader from './PostHeader';
@@ -10,7 +10,7 @@ function Post({ post }) {
       <PostHeader post={post} />
       <PostContent post={post} />
       <PostDetails post={post}/>
-      {/* <PostActions post={post} /> */}
+      <PostActions post={post} />
     </div>
   );
 }

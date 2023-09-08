@@ -23,6 +23,7 @@ function CreatePostModal({ closeModal, editPost, post }) {
 
   const publishHandler = async (e) => {
     e.preventDefault();
+    console.log(editPost)
     let resData;
     if (editPost) {
 
@@ -30,7 +31,7 @@ function CreatePostModal({ closeModal, editPost, post }) {
     } else {
       resData = await createPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
     }
-    if (resData.result && resData.message) {
+    if (resData.ok) {
       setUploadedImage(null);
       setContentValue('');
       closeModal();

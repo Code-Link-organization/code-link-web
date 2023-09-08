@@ -17,8 +17,8 @@ function useFetch(url, options) {
       if (!response.ok) {
         throw resData.message;
       }
-
-      return resData;
+    console.log({...resData,ok:response.ok})
+      return {...resData,ok:response.ok};
     } catch (errors) {
       setError(errors);
     } finally {
