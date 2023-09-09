@@ -32,7 +32,7 @@ export  const  loader=async()=>{
   const response=await fetch('http://localhost:8000/api/posts',{
     method:'GET',
     headers:{
-      "Authorization": "Bearer 35|vwM5NalCjgX4Gz0PHv6kTGvW63lV0SY0lzIfYvOF"
+      "Authorization": "Bearer 38|sum7kFXDl4oezUHHh6BgP6RhKAmdKPJ7YKGKK8bC"
     }
   })
   if(!response.ok){

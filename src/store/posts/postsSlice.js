@@ -9,6 +9,10 @@ const postsSlice=createSlice({
         setPosts:(state,action)=>{
           state.posts=action.payload  
         },
+        addPost:(state,action)=>{
+            const newPost=action.payload
+            state.posts.unshift(newPost)
+        },
         deletePost:(state,action)=>{
             const allPosts=state.posts
             state.posts=allPosts.filter(post=>post.id!=action.payload.id)
@@ -31,4 +35,4 @@ const postsSlice=createSlice({
 })
 
 export const postsReducer=postsSlice.reducer
-export const {deletePost,setPosts,editPost}=postsSlice.actions
+export const {deletePost,setPosts,editPost,addPost}=postsSlice.actions

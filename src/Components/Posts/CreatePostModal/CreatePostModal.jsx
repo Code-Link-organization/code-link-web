@@ -9,11 +9,14 @@ import useFetch from '../../../CustomHooks/useFetch';
 import CreatePostModalFooter from './CreatePostModalFooter';
 import { useNavigate } from 'react-router-dom';
 import { postOptions as options } from '../../../options'
+import { useDispatch } from 'react-redux';
+import { addPost } from '../../../store/posts/postsSlice';
 
 
 function CreatePostModal({ closeModal, editPost, post }) {
   const [uploadedImage, setUploadedImage] = useState(post&&post['image_path'] ?`http://localhost:8000/${post['image_path']}`: null);
   const [contentValue, setContentValue] = useState(post ? post.content : '');
+  const dispatch=useDispatch()
   const navigate = useNavigate();
   const { fetchApi:createPost, loading, error } = useFetch('http://localhost:8000/api/posts/create', options);
 
@@ -32,10 +35,10 @@ function CreatePostModal({ closeModal, editPost, post }) {
       resData = await createPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
     }
     if (resData.ok) {
+     dispatch(addPost(resData.data.post))
       setUploadedImage(null);
       setContentValue('');
       closeModal();
-      navigate(0);
     }
   };
 
