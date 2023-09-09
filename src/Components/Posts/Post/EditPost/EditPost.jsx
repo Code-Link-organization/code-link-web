@@ -13,7 +13,7 @@ import { MenuDropdown } from './MenuDropDown';
 
 function EditPost({ post }) {
   const { fetchApi: deletePostFetch } = useFetch(`http://localhost:8000/api/posts/delete/${post.id}`, postOptions);
-  const { fetchApi: editPostFetch } = useFetch(`http://localhost:8000/api/posts/edit/${post.id}`, postOptions);
+  const { fetchApi: editPostFetch,error:editError,loading:editLoading } = useFetch(`http://localhost:8000/api/posts/edit/${post.id}`, postOptions);
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -55,6 +55,8 @@ function EditPost({ post }) {
         post={post}
         closeModal={closeEditModal}
         open={modalOpen}
+        editError={editError}
+        editLoading={editLoading}
       />
     </div>
   );

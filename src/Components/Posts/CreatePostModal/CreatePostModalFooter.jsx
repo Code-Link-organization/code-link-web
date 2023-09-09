@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ReactLoading from 'react-loading';
 function CreatePostModalFooter({closeModal,loading}) {
   return (

@@ -1,61 +1,64 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import EmojisComponent from '../EmojisComponent';
-import PostOptions from '../Post/PostOptions';
-import UploadImages from '../UploadImages';
-import { toFormData } from '../../../Functions/toFormData';
-import useFetch from '../../../CustomHooks/useFetch';
-import CreatePostModalFooter from './CreatePostModalFooter';
-import { useNavigate } from 'react-router-dom';
-import { postOptions as options } from '../../../options'
+import  { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import useFetch from '../../../CustomHooks/useFetch';
+import { toFormData } from '../../../Functions/toFormData';
+import { postOptions } from '../../../options';
 import { addPost } from '../../../store/posts/postsSlice';
+import CreatePostForm from './CreatePostForm';
 
-
-function CreatePostModal({ closeModal, editPost, post }) {
-  const [uploadedImage, setUploadedImage] = useState(post&&post['image_path'] ?`http://localhost:8000/${post['image_path']}`: null);
+function CreatePostModal({ closeModal, editPost, post,editError,editLoading }) {
+  const [uploadedImage, setUploadedImage] = useState(post && post['image_path'] ? `http://localhost:8000/${post['image_path']}` : null);
   const [contentValue, setContentValue] = useState(post ? post.content : '');
+  const { fetchApi:createPost,  error:createError,loading:createLoading } = useFetch('http://localhost:8000/api/posts/create', postOptions);
   const dispatch=useDispatch()
-  const navigate = useNavigate();
-  const { fetchApi:createPost, loading, error } = useFetch('http://localhost:8000/api/posts/create', options);
 
   const changeHandler = (e) => {
     setContentValue(e.target.value);
   };
 
-  const publishHandler = async (e) => {
-    e.preventDefault();
-    console.log(editPost)
-    let resData;
+const publishHandler = async (e) => {
+  e.preventDefault();
+  let resData;
+  if (editPost) {
+    // If editing an existing post
+    const formData = toFormData([
+      { name: 'content', value: contentValue },
+      uploadedImage ? { value: uploadedImage, name: 'file_path' } : null,
+    ]);
+    resData = await editPost(formData);
+  } else {
+    // If creating a new post
+    const formData = toFormData([
+      { name: 'content', value: contentValue },
+      uploadedImage ? { value: uploadedImage, name: 'file_path' } : null,
+    ]);
+    resData = await createPost(formData);
+  }
+  if (resData.ok) {
     if (editPost) {
-
-      resData = await editPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
+      dispatch(editPost(resData.data.post));
     } else {
-      resData = await createPost(toFormData([{ name: 'content', value: contentValue }, uploadedImage ? { value: uploadedImage, name: 'file_path' } : null]));
-    }
-    if (resData.ok) {
-     dispatch(addPost(resData.data.post))
-      setUploadedImage(null);
-      setContentValue('');
-      closeModal();
-    }
-  };
+      dispatch(addPost(resData.data.post));
 
+    }
+    setUploadedImage(null);
+    setContentValue('');
+    closeModal();
+  }
+};
   return (
-    <form onSubmit={publishHandler} className="bg-[rgba(252,250,248,1)] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] py-8 px-12 rounded-3xl w-[700px] max-w-full m-2">
-      <h3 className="text-4xl font-bold text-center">Create Post</h3>
-      <div className='w-full bg-white mx-auto my-2'>
-        <textarea className='w-full min-h-[200px] resize-none outline-none p-2' onChange={changeHandler} value={contentValue} />
-        <div className='flex justify-between p-2'>
-          <UploadImages setUploadedImage={setUploadedImage} />
-          <EmojisComponent />
-        </div>
-      </div>
-      {error ? <p className='text-red-800 font-medium'>*{error}</p> : ''}
-      <PostOptions uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
-      <CreatePostModalFooter closeModal={closeModal} loading={loading} />
-    </form>
+    <CreatePostForm
+      contentValue={contentValue}
+      changeHandler={changeHandler}
+      uploadedImage={uploadedImage}
+      closeModal={closeModal}
+      publishHandler={publishHandler}
+      setUploadedImage={setUploadedImage}
+      error={editError?editError:createError}
+      loading={editLoading?editLoading:createLoading}
+
+    />
   );
 }
 

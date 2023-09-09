@@ -1,9 +1,11 @@
-import imageIcon from '../../assets/images/posts/image 100.svg'
+/* eslint-disable react/prop-types */
+import imageIcon from '../../../assets/images/posts/image 100.svg'
 
 function UploadImages({setUploadedImage}) {
       const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
         setUploadedImage(e.target.files[0])
+        console.log(setUploadedImage)
     }
   };
   return (
