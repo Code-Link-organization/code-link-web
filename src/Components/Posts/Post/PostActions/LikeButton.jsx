@@ -21,7 +21,7 @@ function LikeButton({post,usersLikesThisPost}) {
    }
   }
   return (
-    <button onClick={likePostHandler} className='flex flex-row-reverse items-center gap-2 '  ><img src={likeIcon} alt='like icon' className={`${userLikedPost?'invert-[0.5]':''} w-4`}/>Like</button>
+    <button onClick={likePostHandler} className='flex flex-row-reverse items-center gap-2 '  ><img src={likeIcon} alt='like icon' className={`${userLikedPost?'invert-[0.5]':''} w-5`}/>Like</button>
   )
 }
 

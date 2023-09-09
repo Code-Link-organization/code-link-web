@@ -1,4 +1,3 @@
-import React from 'react';
 
 // Import your icons here
 import commentIcon from '../../../assets/images/posts/image 79.svg';
@@ -15,8 +14,8 @@ function PostDetails({ post }) {
   return (
     <div className='flex justify-between  py-4 border-b border-b-gray-300 border-b-opacity-100 border-b-solid border-b-[1.5px]'>
       {icons.map(({ count, icon, alt }, index) => (
-        <p key={index} className='flex items-center gap-3 text-sm'>
-          {count} <img src={icon} alt={alt} className='w-4'/>
+        <p key={index} className='flex items-center gap-3 text-sm font-medium'>
+          {count} <img src={icon} alt={alt} className='w-5'/>
         </p>
       ))}
     </div>

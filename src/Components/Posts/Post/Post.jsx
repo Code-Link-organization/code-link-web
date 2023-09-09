@@ -48,9 +48,12 @@ function Post({ post }) {
   return (
     <div className='py-[30px] border-t-[6px] border-t-[rgba(235,235,235,1)] font-medium'>
       <PostHeader post={post} />
+      <div className='px-5'>
       <PostContent post={post} />
       <PostDetails post={post} />
       <PostActions post={post} usersLikesThisPost={usersLikesThisPost} />
+      </div>
+
      {/* {usersCommentsOnPost.length>0&& <CommentSection fetchedComments={usersCommentsOnPost}  /> } */}
     </div>
   );
