@@ -7,9 +7,11 @@ function HomeContent() {
 
 
   return (
-    <div className="w-1/2 h-full  shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[calc(100vh_-_99px)] bg-[rgba(237,237,237,1)]">  
+    <div className="w-1/2 h-full  shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[calc(100vh_-_99px)] bg-[rgba(252,250,248,1)]">  
+    <div className="w-[700px]  mx-auto">
       <CreatePost/>    
       <Posts/>
+    </div>
     </div>
   )
 }

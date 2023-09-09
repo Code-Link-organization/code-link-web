@@ -6,7 +6,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setPosts } from '../../store/posts/postsSlice'
 import RequireAuth from '../../Protected/RequireAuth'
-import Emojis from './Emojis'
+import HomeSideBar from '../../Components/Home/HomeSideBar/HomeSideBar'
 function Home() {
 
     const posts=useLoaderData()
@@ -22,6 +22,7 @@ function Home() {
   <div className='flex'>
     <FriendsList/>
     <HomeContent />
+    <HomeSideBar/>
   </div></RequireAuth>
   )
 }

@@ -8,9 +8,8 @@ function useFetch(url, options) {
 
   const fetchApi = async (data) => {
     setLoading(true);
-
     try {
-      const response = await fetch(url, { ...options('35|vwM5NalCjgX4Gz0PHv6kTGvW63lV0SY0lzIfYvOF'), body: data });
+      const response = await fetch(url, { ...options('37|7Q91EnaQrAhQQQ6YZKHQjsUJNdrMeYkiNXsRW2Jp'), body: data });
       const resData = await response.json();
       console.log(resData)
 
@@ -20,6 +19,7 @@ function useFetch(url, options) {
     console.log({...resData,ok:response.ok})
       return {...resData,ok:response.ok};
     } catch (errors) {
+      console.log(errors)
       setError(errors);
     } finally {
       setLoading(false);
