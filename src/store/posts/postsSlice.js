@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchLikesForPost } from './fetchLikesForPost';
 
 const postsSlice=createSlice({
     name:'posts',
     initialState:{
-        posts:[]
+        posts:[],
+        postsLikesData:[]
     },
     reducers:{
         setPosts:(state,action)=>{
@@ -30,8 +32,30 @@ const postsSlice=createSlice({
                 return post
             }
            })
+        },
+        
+    },
+  extraReducers: (builder) => {
+    builder.addCase(fetchLikesForPost.fulfilled, (state, action) => {
+      const fetchedData = action.payload.likeData;
+
+      if (fetchedData.length > 0) {
+        const postId = fetchedData[0].post_id;
+
+        // Check if like data for the post already exists
+        const existingPostLikeDataIndex = state.postsLikesData.findIndex((item) => item.postid === postId);
+
+        if (existingPostLikeDataIndex === -1) {
+          // If it doesn't exist, add it to the state
+          state.postsLikesData.push({ postid: postId, likesData: fetchedData });
+        } else {
+          // If it already exists, update the likesData for that post
+          state.postsLikesData[existingPostLikeDataIndex].likesData = fetchedData;
         }
-    }
+      }
+        
+    });
+  },
 })
 
 export const postsReducer=postsSlice.reducer
