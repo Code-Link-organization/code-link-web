@@ -12,6 +12,10 @@ import { setSavedUser } from "./store/user/userSlice";
 import Home, { loader as postsLoader } from "./Pages/Home/Home";
 import Layout from "./Protected/Layout";
 import ResetPassword from "./Components/Forms/ResetPassword";
+import Tracks from "./Components/Friends/Tracks";
+import SelectionsSearch from "./Components/Home/HomeSideBar/SelectionsSearch";
+import FriendsList from './Components/Friends/FriendsList'
+import Friends from "./Components/Friends/FriendsList";
 // const router=createBrowserRouter(
 // [{
 //   path:'/',
@@ -53,8 +57,19 @@ import ResetPassword from "./Components/Forms/ResetPassword";
 const router=createBrowserRouter([{
  element:<Home/>,
  path:'/',
- loader:postsLoader
-}])
+ loader:postsLoader,
+ children:[
+   {
+    index:true,
+    element:<SelectionsSearch/>
+   },
+   
+   {
+    path:'friends',
+    element:<Friends/>,
+   },],
+}
+])
 function App() {
   // const dispatch=useDispatch()
   //  useEffect(()=>{

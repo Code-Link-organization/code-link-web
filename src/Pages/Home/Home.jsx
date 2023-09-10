@@ -7,11 +7,28 @@ import { useDispatch } from "react-redux"
 import { setPosts } from '../../store/posts/postsSlice'
 import RequireAuth from '../../Protected/RequireAuth'
 import HomeSideBar from '../../Components/Home/HomeSideBar/HomeSideBar'
+import { useState } from 'react'
 function Home() {
 
     const posts=useLoaderData()
-
   const dispatch=useDispatch()
+    const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 99) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(()=>{
     dispatch(setPosts(posts))
@@ -19,10 +36,10 @@ function Home() {
   return (
   <RequireAuth>
     <Header></Header>
-  <div className='flex'>
-    <FriendsList/>
+  <div className='flex relative'>
+    <FriendsList isFixed={isFixed}/>
     <HomeContent />
-    <HomeSideBar/>
+    <HomeSideBar isFixed={isFixed}/>
   </div></RequireAuth>
   )
 }

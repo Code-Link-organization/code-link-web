@@ -33,6 +33,14 @@ const postsSlice=createSlice({
             }
            })
         },
+        // setPostLike:(state,action)=>{
+        //    const allPosts=state.posts
+        //    const user
+        //    const editedPost=allPosts.find(post=>post.post_id==action.payload.postid)            
+        //    const condition =  editedPost.likesData.some((userData) => userData.user_id === user_id);
+
+        //     }
+        // }
         
     },
   extraReducers: (builder) => {
