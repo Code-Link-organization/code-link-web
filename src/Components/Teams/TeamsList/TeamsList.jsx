@@ -1,5 +1,5 @@
 import SearchField from "../../Home/HomeSideBar/SearchField"
-import createTeamIcon from '../../assets/images/teams/double-team-svgrepo-com 2.svg'
+import createTeamIcon from '../../../assets/images/teams/double-team-svgrepo-com 2.svg'
 import TeamItemList from "./TeamItemList"
 
 function TeamsList() {

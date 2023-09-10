@@ -1,4 +1,4 @@
-import teamIcon from '../../assets/images/teams/Rectangle 195.svg'
+import teamIcon from '../../../assets/images/teams/Rectangle 195.svg'
 
 function TeamItemList() {
   return (
