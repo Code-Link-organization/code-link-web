@@ -1,4 +1,4 @@
-const getRandomGirlName=()=>{
+export const getRandomGirlName=()=>{
     const names = ["Jessica", "Marry", "Olivia", "Layla", "Ella", "Emily", "Amelia"];
 
     if (names.length === 0) {
