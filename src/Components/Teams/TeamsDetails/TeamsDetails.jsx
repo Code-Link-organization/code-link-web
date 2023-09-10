@@ -10,13 +10,18 @@ function TeamsDetails() {
         <button className="dark-btn w-[64px] h-[28px] element-center text-[19px] font-roboto">Edit</button>
         <button><img src={chatIcon} alt='chat Icon' /></button>
       </div>
+
       <h4 className='text-center text-xl font-roboto'>Team Name</h4>
+
       <button className='ml-auto block'>
         <img src={closeIcon} alt='close Icon' />
       </button>
+
       <img src={teamImage} alt='Team Image' className='mx-auto mt-12' />
+
       <p className='mt-5 font-inter text-[15px] mb-[42px]'>Lorem ipsum is placeholder text commonly used in the graphic, print, 
         and publishing..more Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing..more</p>
+        
         <span className='absolute left-0 w-full border-b-[1px] border-b-[rgba(200,174,125,1)]'></span>
         <TeamMembers/>
     </div>

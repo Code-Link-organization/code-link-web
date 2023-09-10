@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 import  { useEffect } from 'react';
 import PostActions from '../Post/PostActions/PostActions';
 import PostContent from './PostContent';
 import PostDetails from './PostDetails/PostDetails';
 import PostHeader from './PostHeader';
-import CommentSection from './PostActions/comment/CommentSection';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLikesForPost } from '../../../store/posts/fetchLikesForPost';
-import LikesList from './PostDetails/LikesList';
+import LikesList from './PostDetails/likes/LikesList';
 import { useState } from 'react';
+import CommentList from './PostDetails/comment/CommentList';
 
 function Post({ post }) {
   const dispatch=useDispatch()
@@ -27,8 +28,8 @@ function Post({ post }) {
       <PostActions post={post} usersLikesThisPost={existedPost?existedPost.likesData:[]} />
       </div>
       {openLikesList &&<LikesList datalikes={likesDataForPost} closeLikesList={()=>setOpenLikesList(false)}/>}
+      <CommentList/>
 
-     {/* {usersCommentsOnPost.length>0&& <CommentSection fetchedComments={usersCommentsOnPost}  /> } */}
     </div>
   );
 }

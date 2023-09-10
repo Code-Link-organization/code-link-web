@@ -1,5 +1,5 @@
 import Tracks from './Tracks'
-import LikeListItem from '../Posts/Post/PostDetails/LikeListItem'
+import LikeListItem from '../Posts/Post/PostDetails/likes/LikeListItem'
 import { getFriendsFakeData } from '../../Functions/getFriendsFakeData'
 import { useState } from 'react'
 
