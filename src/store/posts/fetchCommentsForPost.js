@@ -4,16 +4,16 @@ import { getOptions } from '../../options';
 
 const API_ENDPOINT = 'http://localhost:8000/api/posts';
 
-export const fetchLikesForPost = createAsyncThunk(
+export const fetchCommentForPost = createAsyncThunk(
   'posts/fetchLikesForPost',
   async (postId) => {
     try {
-      const response = await fetch(`${API_ENDPOINT}/${postId}/likes`,getOptions('38|sum7kFXDl4oezUHHh6BgP6RhKAmdKPJ7YKGKK8bC'));
+      const response = await fetch(`${API_ENDPOINT}/${postId}/comments`,getOptions('38|sum7kFXDl4oezUHHh6BgP6RhKAmdKPJ7YKGKK8bC'));
       if (!response.ok) {
         throw 'Failed to fetch likes data';
       }
       const resData = await response.json();
-      return resData.data; // Return the fetched like data
+      return resData.data;
     } catch (error) {
       return error;
     }

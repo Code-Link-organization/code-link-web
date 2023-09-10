@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { comment } from 'postcss';
+import { fetchCommentForPost } from './fetchCommentsForPost';
 import { fetchLikesForPost } from './fetchLikesForPost';
 
 const postsSlice=createSlice({
     name:'posts',
     initialState:{
         posts:[],
-        postsLikesData:[]
+        postsLikesData:[],
+        postsCommentsData:[]
     },
     reducers:{
         setPosts:(state,action)=>{
@@ -18,6 +21,17 @@ const postsSlice=createSlice({
         deletePost:(state,action)=>{
             const allPosts=state.posts
             state.posts=allPosts.filter(post=>post.id!=action.payload.id)
+        },
+        addComment:(state,action)=>{
+      const { postId, comments } = action.payload;
+
+      // Find the index of the post with the matching postId
+      const postIndex = state.postsCommentsData.findIndex(post => post.postid === postId);
+
+      if (postIndex !== -1) {
+        // Replace the old comments with the updated ones
+        state.postsCommentsData[postIndex].commentsData = comments;
+      }
         },
         editPost:(state,action)=>{
            const allPosts=state.posts
@@ -44,21 +58,22 @@ const postsSlice=createSlice({
         
     },
   extraReducers: (builder) => {
-    builder.addCase(fetchLikesForPost.fulfilled, (state, action) => {
-      const fetchedData = action.payload.likeData;
+    builder.addCase(fetchCommentForPost.fulfilled, (state, action) => {
+      const fetchedData = action.payload.comments;
 
-      if (fetchedData.length > 0) {
+
+      if (fetchedData&& fetchedData.length > 0) {
         const postId = fetchedData[0].post_id;
 
         // Check if like data for the post already exists
-        const existingPostLikeDataIndex = state.postsLikesData.findIndex((item) => item.postid === postId);
+        const existingPostDataIndex = state.postsCommentsData.findIndex((item) => item.postid === postId);
 
-        if (existingPostLikeDataIndex === -1) {
+        if (existingPostDataIndex === -1) {
           // If it doesn't exist, add it to the state
-          state.postsLikesData.push({ postid: postId, likesData: fetchedData });
+          state.postsCommentsData.push({ postid: postId, commentsData: fetchedData });
         } else {
           // If it already exists, update the likesData for that post
-          state.postsLikesData[existingPostLikeDataIndex].likesData = fetchedData;
+          state.postsCommentsData[existingPostDataIndex].commentsData = fetchedData;
         }
       }
         
@@ -67,4 +82,4 @@ const postsSlice=createSlice({
 })
 
 export const postsReducer=postsSlice.reducer
-export const {deletePost,setPosts,editPost,addPost}=postsSlice.actions
+export const {deletePost,setPosts,editPost,addPost,addComment}=postsSlice.actions
