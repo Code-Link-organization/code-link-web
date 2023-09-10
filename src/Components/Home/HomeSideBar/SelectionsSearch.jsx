@@ -6,16 +6,16 @@ import BoxItem from './BoxItem';
 
 function SelectionsSearch() {
     const links = [
-  { imgPath: FriendsImg, path: 'friends' },
-  { imgPath: MentorsImg, path: 'mentors' },
-  { imgPath: TeamImg, path: 'team' },
-  { imgPath: ResourcesImg, path: 'resources' },
+  { imgPath: FriendsImg, text: 'Friends',path:'friends' },
+  { imgPath: MentorsImg, text: 'Mentors',path:'/mentors' },
+  { imgPath: TeamImg, text: 'Teams',path:'/teams' },
+  { imgPath: ResourcesImg, text: 'Resources', path:'/resources' },
 ];
   return (
     <>            <p className='text-xl my-6 font-normal'>Choose what you want!</p>
    <div className='flex flex-wrap justify-between h-fit  w-full'>
           {links.map((link, index) => (
-    <BoxItem key={index} path={link.path} imgPath={link.imgPath}/>
+    <BoxItem key={index} path={link.path} text={link.text} imgPath={link.imgPath}/>
       ))} 
    </div>
       </>

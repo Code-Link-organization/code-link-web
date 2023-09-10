@@ -16,6 +16,7 @@ import Tracks from "./Components/Friends/Tracks";
 import SelectionsSearch from "./Components/Home/HomeSideBar/SelectionsSearch";
 import FriendsList from './Components/Friends/FriendsList'
 import Friends from "./Components/Friends/FriendsList";
+import Teams from "./Pages/Teams/Teams";
 // const router=createBrowserRouter(
 // [{
 //   path:'/',
@@ -67,9 +68,11 @@ const router=createBrowserRouter([{
    {
     path:'friends',
     element:<Friends/>,
-   },],
-}
-])
+   },]
+},{
+  element:<Teams/>,
+  path:'/teams',}]
+)
 function App() {
   // const dispatch=useDispatch()
   //  useEffect(()=>{

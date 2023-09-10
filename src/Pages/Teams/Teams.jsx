@@ -1,7 +1,14 @@
+import Header from "../../Components/StartPage/Header"
+import TeamsList from "../../Components/Teams/TeamsList/TeamsList"
 
 function Teams() {
   return (
-    <div>Teams</div>
+    <>
+    <Header/>
+    <div className="bg-white">
+      <TeamsList/>
+    </div>
+    </>
   )
 }
 
