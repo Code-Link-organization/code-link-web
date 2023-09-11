@@ -5,9 +5,7 @@ function StartPage() {
 
   return (
     <div className=" min-h-100vh bg-secondary ">
-      <div>
-        <Header/>
-      </div>
+
       <StartPageHome/>
     </div>
   )

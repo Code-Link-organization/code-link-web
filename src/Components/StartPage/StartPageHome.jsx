@@ -2,35 +2,23 @@ import { useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { Outlet, useLocation,useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import NoRequire from "../../Protected/NoRequire";
 import { errorsToNull } from "../../store/user/userSlice";
 import { content } from "./content";
-import Header from "./Header";
 import useChangeContent from "./useChangeContent";
 function StartPageHome() {
   const {currentContent,activeContent}=useChangeContent(content.length)
   const location=useLocation()
   const dispatch=useDispatch()
-  const navigate=useNavigate()
-    const userData = useSelector(state=>state.auth) 
 
 
   useEffect(()=>{
    dispatch(errorsToNull())
   },[location])
-   useEffect(()=>{
-    console.log('data')
-    console.log(userData)
-    if(userData.user && userData.user.token ){
-    return  navigate('/home')
-    }
-        if(userData.user ){
-     return navigate('/verification')
-    }
-   },[userData])
+ 
 
-  return (
-   <>
-      <Header/>
+  return( 
+   <NoRequire>
        <div className="flex flex-row-reverse h-[calc(100vh_-_100px)] container ">
       <div className="w-1/2 flex items-center flex-col h-full justify-center ">
         {location.pathname === "/" ? (
@@ -53,8 +41,7 @@ function StartPageHome() {
         <img src={content[currentContent].imgPath} alt="start-img" className="w-[80%]" />
       </div>
     </div>
-   </>
-  );
+   </NoRequire>);
+  
 }
-
 export default StartPageHome;

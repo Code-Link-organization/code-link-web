@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux'
 
 function Posts() {
   const posts=useSelector(state=>state.posts).posts
- if(posts.length)
+ if(posts)
   return (
     <div  >
    {posts.map(post=><Post post={post} key={post.id}/>)}

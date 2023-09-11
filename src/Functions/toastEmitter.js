@@ -15,7 +15,7 @@ export const toastEmitter = (msg, type = 'success') => {
       theme: 'light',
     });}
     else if(type==='error'){
-    toast.error('msg', {
+    toast.error(msg, {
       position: 'top-left',
       autoClose: 3000,
       hideProgressBar: false,

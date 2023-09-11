@@ -21,7 +21,7 @@ function ForgetPassword() {
   }
   
     return (
-    <NoRequire>
+    <>
 
     <form className='w-[498px]' onSubmit={submitFormHandler}>
       <div className='mb-20'>
@@ -36,7 +36,7 @@ function ForgetPassword() {
     </form>
 
 
-    </NoRequire>
+    </>
   )
 }
 

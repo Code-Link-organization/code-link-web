@@ -1,4 +1,5 @@
 import {  createAsyncThunk } from '@reduxjs/toolkit';
+import { toastEmitter } from '../../Functions/toastEmitter';
 
 
 export const signUp = createAsyncThunk(
@@ -18,8 +19,11 @@ export const signUp = createAsyncThunk(
       });
       const resData=await res.json()
      if(!res.ok){
+            toastEmitter(resData.message,'error')
+
       throw resData.errors
      }
+     toastEmitter(resData.message)
       return resData.data
     }
     catch(error){

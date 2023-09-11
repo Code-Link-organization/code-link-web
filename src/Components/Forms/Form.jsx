@@ -4,15 +4,19 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import InputField from "./InputField"
 import ReactLoading from 'react-loading';
+import {Navigate,useNavigate} from 'react-router-dom';
+
 
 
 function Form({initalValues,submitAction,inputs,children,type,token}) {
-     const user = useSelector(state=>state.auth) 
+     const user = useSelector(state=>state.auth)
+     const navigate=useNavigate() 
 
      const dispatch = useDispatch()
 
      const [formData,setFormData] = useState(initalValues)
-
+  
+ 
    const submitFormHandler = (e)=>{
     e.preventDefault()
    var formdata = new FormData();
@@ -25,10 +29,10 @@ function Form({initalValues,submitAction,inputs,children,type,token}) {
       <form className="py-2 flex flex-col gap-5  " onSubmit={submitFormHandler}>
      {inputs.map((input,index)=><InputField setFormData={setFormData} formData={formData} {...input} key={index}/>)}
 
-      {user.loading?	<ReactLoading className="mx-auto" type={'spin'} color={"#D9C6A4"} height={50} width={50} />:
+
        <button type="submit" className="btn w-fit mx-auto ">
           {type}
-        </button>}
+        </button>
       </form>
     </div>
   )

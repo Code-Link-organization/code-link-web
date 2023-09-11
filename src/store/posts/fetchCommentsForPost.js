@@ -6,9 +6,12 @@ const API_ENDPOINT = 'http://localhost:8000/api/posts';
 
 export const fetchCommentForPost = createAsyncThunk(
   'posts/fetchCommentsForPost',
+
   async (postId) => {
+        const token=JSON.parse(localStorage.getItem('user')).token
+
     try {
-      const response = await fetch(`${API_ENDPOINT}/${postId}/comments`,getOptions('38|sum7kFXDl4oezUHHh6BgP6RhKAmdKPJ7YKGKK8bC'));
+      const response = await fetch(`${API_ENDPOINT}/${postId}/comments`,getOptions(token));
       if (!response.ok) {
         throw 'Failed to fetch likes data';
       }

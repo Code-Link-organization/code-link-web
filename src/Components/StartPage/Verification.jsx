@@ -4,31 +4,29 @@ import OTPInput from "react-otp-input"
 import { useDispatch, useSelector } from "react-redux"
 import { verifyAction } from "../../store/user/verifyAction"
 import { sendEmail } from "../../store/user/SendEmail"
+import {Navigate, useNavigate} from 'react-router-dom';
+import { redirect } from "react-router-dom";
 
 
 
 
 function Verification() {
     const [otp,setOtp]=useState(null)
-    const userData = useSelector(state=>state.auth) 
-        const user=userData.user
-
-    
+    const userData = useSelector(state=>state.auth)
     const dispatch=useDispatch()
 
     //submit otp
     const submitOtp=(e)=>{
         e.preventDefault()
-        dispatch(verifyAction(toFormData([{name:'email',value:user.email},{name:'code',value:otp}])))
+        dispatch(verifyAction(toFormData([{name:'email',value:userData.user.email},{name:'code',value:otp}])))
     }
 
    //resend code
     
     const resendCode=()=>{
-      dispatch(sendEmail({formData:toFormData([{name:'email',value:user.email}])}))
+      dispatch(sendEmail({formData:toFormData([{name:'email',value:userData.user.email}])}))
     }
-    console.log(userData.error?userData.error:"")
-
+    if(userData &&(userData.user | !userData.forgetPassword)) return <Navigate to='/'/>
   return (
   <>
         <div className="flex flex-col gap-8">
@@ -43,14 +41,14 @@ function Verification() {
       shouldAutoFocus={true}
       containerStyle='otp-container'
     />
-    { <p className="text-center text-red-700 font-medium my-4">{user.error&&userData.error.code['']?userData.error['code']:""} </p>}
+    { <p className="text-center text-red-700 font-medium my-4">{userData.error&&userData.error.code['']?userData.error['code']:""} </p>}
         </div>
     <button type="submit" className="btn mx-auto">Submit</button>
        </form>
-       <p className="text-xl font-normal">If you didn’t receive any code, {userData.loading?'loading...':
+       <p className="text-xl font-normal">If you didn’t receive any code, loading...
        <button onClick={()=>{resendCode()}}
         className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend
-        </button>}</p>
+        </button></p>
     </div>
   </>
   )

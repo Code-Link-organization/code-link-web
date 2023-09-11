@@ -37,6 +37,7 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api';
+import { toastEmitter } from '../../Functions/toastEmitter';
 
 export const logIn = createAsyncThunk('auth/logIn', async (data, { rejectWithValue }) => {
   try {
@@ -51,9 +52,12 @@ export const logIn = createAsyncThunk('auth/logIn', async (data, { rejectWithVal
       const resData=await response.json()
 
 
-    if (!response.ok && !response.status === 401) {
+    if (!response.ok ) {
+      toastEmitter(resData.message,'error')
       throw resData.errors;
     }
+          toastEmitter(resData.message)
+
 
     return resData.data;
   } catch (error) {

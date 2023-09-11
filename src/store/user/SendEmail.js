@@ -1,5 +1,6 @@
 import {  createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api';
+import { toastEmitter } from '../../Functions/toastEmitter';
 
 
 export const sendEmail = createAsyncThunk(
@@ -19,8 +20,12 @@ export const sendEmail = createAsyncThunk(
       });
       const resData=await res.json()
      if(!res.ok){
+            toastEmitter(resData.message,'error')
+
       throw resData.message
      }
+           toastEmitter(resData.message)
+
       return {user:resData.data.user,forgetPassword:data.forgetPassword}
     }
     catch(error){

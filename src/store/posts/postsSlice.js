@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCommentForPost } from './fetchCommentsForPost';
 import { fetchLikesForPost } from './fetchLikesForPost';
+import { fetchPosts } from './fetchPosts';
 
 
 
@@ -44,6 +45,16 @@ const postsSlice = createSlice({
     // Define your other reducers here
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
+      console.log(action.payload)
+      state.posts = action.payload.postData;
+
+
+        
+      
+
+    });
+
     builder.addCase(fetchLikesForPost.fulfilled, (state, action) => {
       const fetchedData = action.payload.likeData;
 

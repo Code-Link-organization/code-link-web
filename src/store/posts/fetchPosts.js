@@ -4,13 +4,13 @@ import { getOptions } from '../../options';
 
 const API_ENDPOINT = 'http://localhost:8000/api/posts';
 
-export const fetchLikesForPost = createAsyncThunk(
-  'posts/fetchLikesForPost',
-  async (postId) => {
+export const fetchPosts = createAsyncThunk(
+  'posts/fetchPosts',
+  async () => {
         const token=JSON.parse(localStorage.getItem('user')).token
 
     try {
-      const response = await fetch(`${API_ENDPOINT}/${postId}/likes`,getOptions(token));
+      const response = await fetch(`${API_ENDPOINT}`,getOptions(token));
       if (!response.ok) {
         throw 'Failed to fetch likes data';
       }

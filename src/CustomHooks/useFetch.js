@@ -5,12 +5,12 @@ import { toastEmitter } from "../Functions/toastEmitter";
 function useFetch(url, options) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  // const userToken = useSelector(state => state.auth.user.token);
+  const userToken = useSelector(state => state.auth.user.token);
 
   const fetchApi = async (data) => {
     setLoading(true);
     try {
-      const response = await fetch(url, { ...options('38|sum7kFXDl4oezUHHh6BgP6RhKAmdKPJ7YKGKK8bC'), body: data });
+      const response = await fetch(url, { ...options(userToken), body: data });
       const resData = await response.json();
       console.log(resData)
 

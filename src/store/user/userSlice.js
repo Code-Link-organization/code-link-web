@@ -40,11 +40,13 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(signUp.fulfilled, (state, action) => {
+        console.log(action.payload.user)
         state.loading = false;
         state.error = null;
         state.user = action.payload.user;
       })
       .addCase(signUp.rejected, (state, action) => {
+      
         state.loading = false;
         state.error = action.payload;
       })
@@ -57,6 +59,7 @@ const userSlice = createSlice({
         state.error = null;
         state.user = action.payload.user;
         if (action.payload.user.token) {
+          localStorage.setItem('token', JSON.stringify(action.payload.user.token));
           state.verified = true;
           state.isLoggedIn = true;
         }
@@ -65,6 +68,7 @@ const userSlice = createSlice({
       .addCase(logIn.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        console.log(action)
       })
       .addCase(verifyAction.pending, (state) => {
         state.loading = true;
@@ -77,6 +81,7 @@ const userSlice = createSlice({
         state.error = null;
         if (state.forgetPassword === false) {
           localStorage.setItem('user', JSON.stringify(action.payload.user));
+          localStorage.setItem('token',JSON.stringify(action.payload.user.token))
         }
       })
       .addCase(verifyAction.rejected, (state, action) => {
@@ -119,6 +124,8 @@ const userSlice = createSlice({
         state.forgetPassword = false;
         state.loading = false;
         localStorage.setItem('user', JSON.stringify(state.user));
+        localStorage.setItem('token', JSON.stringify(state.user.token));
+
       });
   },
 });
