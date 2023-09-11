@@ -4,9 +4,9 @@ import TeamItemList from "./TeamItemList"
 
 function TeamsList() {
   return (
-    <div className="w-[390px] px-6 pt-12 bg-[rgba(252,250,248,1)] h-screen">
+    <div className="w-1/4 px-6 pt-12 bg-[rgba(252,250,248,1)] h-screen">
         <div className="flex gap-1">
-                    <div className="w-[264px]"><SearchField/></div>
+                    <div className="w-full"><SearchField/></div>
         <button className="text-center text-[10px] w-fit"><img className="mx-auto" src={createTeamIcon}/>Create team</button>
         </div>
         <div className="flex flex-col gap-6 pt-2">

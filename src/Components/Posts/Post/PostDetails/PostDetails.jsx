@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 
 // Import your icons here
 import commentIcon from '../../../../assets/images/posts/image 79.svg';
 import likeIcon from '../../../../assets/images/posts/icons8-like-24 2.svg';
 import sharIcon from '../../../../assets/images/posts/icons8-share-30 2.svg';
 
-function PostDetails({ post, openLikesList }) {
+function PostDetails({ post, openLikesList,openCommentsList,likesNumber,commentsNumber }) {
   const icons = [
-    { count: post.likes_count, icon: likeIcon, alt: 'Like Icon' ,click:openLikesList},
-    { count: post.comments_count, icon: commentIcon, alt: 'Comment Icon' },
+    { count: likesNumber, icon: likeIcon, alt: 'Like Icon' ,click:openLikesList},
+    { count: commentsNumber, icon: commentIcon, alt: 'Comment Icon',click:openCommentsList },
     { count: post.shares_count, icon: sharIcon, alt: 'Share Icon' },
   ];
 

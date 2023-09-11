@@ -17,6 +17,7 @@ import SelectionsSearch from "./Components/Home/HomeSideBar/SelectionsSearch";
 import FriendsList from './Components/Friends/FriendsList'
 import Friends from "./Components/Friends/FriendsList";
 import Teams from "./Pages/Teams/Teams";
+
 // const router=createBrowserRouter(
 // [{
 //   path:'/',
@@ -85,7 +86,10 @@ function App() {
 
    
   return (
-  <RouterProvider router={router}/>
+    <>
+    <RouterProvider router={router}/>
+
+    </>
   )
 }
 

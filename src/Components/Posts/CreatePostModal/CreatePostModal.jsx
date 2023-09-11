@@ -2,9 +2,10 @@
 import  { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useFetch from '../../../CustomHooks/useFetch';
+import { toastEmitter } from '../../../Functions/toastEmitter';
 import { toFormData } from '../../../Functions/toFormData';
 import { postOptions } from '../../../options';
-import { addPost } from '../../../store/posts/postsSlice';
+import { addPost,editPost as editPostAction } from '../../../store/posts/postsSlice';
 import CreatePostForm from './CreatePostForm';
 
 function CreatePostModal({ closeModal, editPost, post,editError,editLoading }) {
@@ -37,7 +38,7 @@ const publishHandler = async (e) => {
   }
   if (resData.ok) {
     if (editPost) {
-      dispatch(editPost(resData.data.post));
+      dispatch(editPostAction(resData.data.post));
     } else {
       dispatch(addPost(resData.data.post));
 

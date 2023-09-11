@@ -14,6 +14,8 @@ import { fetchCommentForPost } from '../../../store/posts/fetchCommentsForPost';
 function Post({ post }) {
   const dispatch=useDispatch()
   const [openLikesList,setOpenLikesList]=useState(false)
+  const [openCommentsList,setOpenCommentsList]=useState(false)
+
   const likesDataForPost=useSelector(state=>state.posts).postsLikesData
   const commentsDataForPost=useSelector(state=>state.posts).postsCommentsData
 
@@ -27,18 +29,17 @@ function Post({ post }) {
     dispatch(fetchCommentForPost(post.id))
   },[])
 
-  console.log(commentsofPost,commentsDataForPost)
 
   return (
     <div className='py-[30px] border-t-[6px] relative border-t-[rgba(235,235,235,1)] font-medium'>
       <PostHeader post={post} />
       <div >
       <PostContent post={post} />
-      <PostDetails post={post} openLikesList={setOpenLikesList}  />
+      <PostDetails post={post} openLikesList={setOpenLikesList} openCommentsList={()=>setOpenCommentsList(true)} likesNumber={likesDataForPost?likesDataForPost.length:0} commentsNumber={commentsDataForPost?commentsDataForPost.length:0}  />
       <PostActions post={post} usersLikesThisPost={existedPost?existedPost.likesData:[]} />
       </div>
       {openLikesList &&<LikesList datalikes={likesDataForPost} closeLikesList={()=>setOpenLikesList(false)}/>}
-     {commentsofPost&& <CommentList comments={commentsofPost.commentsData} id={post.id}/>}
+     {openCommentsList&& <CommentList closeCommentsList={()=>setOpenCommentsList(false)} comments={commentsofPost?commentsofPost.commentsData:[]} id={post.id}/>}
 
     </div>
   );

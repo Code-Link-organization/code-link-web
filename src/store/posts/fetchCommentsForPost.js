@@ -5,7 +5,7 @@ import { getOptions } from '../../options';
 const API_ENDPOINT = 'http://localhost:8000/api/posts';
 
 export const fetchCommentForPost = createAsyncThunk(
-  'posts/fetchLikesForPost',
+  'posts/fetchCommentsForPost',
   async (postId) => {
     try {
       const response = await fetch(`${API_ENDPOINT}/${postId}/comments`,getOptions('38|sum7kFXDl4oezUHHh6BgP6RhKAmdKPJ7YKGKK8bC'));

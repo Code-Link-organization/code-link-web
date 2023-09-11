@@ -5,7 +5,7 @@ import closeIcon from '../../../assets/images/teams/icons8-close-50 1 (1).svg'
 
 function TeamsDetails() {
   return (
-    <div className="w-[390px] pt-4 bg-[rgba(252,250,248,1)] px-4 relative ">
+    <div className="w-1/4 pt-4 bg-[rgba(252,250,248,1)] px-4 relative ">
       <div className='mb-1 flex justify-between'>
         <button className="dark-btn w-[64px] h-[28px] element-center text-[19px] font-roboto">Edit</button>
         <button><img src={chatIcon} alt='chat Icon' /></button>
