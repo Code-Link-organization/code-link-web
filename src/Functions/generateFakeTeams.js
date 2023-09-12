@@ -15,8 +15,8 @@ export const getRandomTeamsData = (number) => {
     const teamBio=getFakeTeamBio()
     const teamImage=generateFakeTeamImage()
     const teamMembers=getFriendsFakeData(4) 
-    const adminId= Math.floor(Math.random() * 100) + 1;
-    const teamId= Math.floor(Math.random() * 100) + 1;
+    const adminId=i;
+    const teamId= i;
  
 
 

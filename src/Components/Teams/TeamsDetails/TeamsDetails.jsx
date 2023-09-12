@@ -24,7 +24,7 @@ function TeamsDetails() {
       <p className='mt-5  text-[15px] mb-[42px]'>{team.teamBio}</p>
         
         <span className='absolute left-0 w-full h-[6px] bg-[rgba(235,235,235,1)] '></span>
-        <TeamMembers teamMembers={team.teamMembers}/>
+        <TeamMembers team={team} teamMembers={team.teamMembers}/>
 
     </div></>
   )

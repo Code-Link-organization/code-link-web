@@ -34,7 +34,7 @@ export const getFriendsFakeData = (number) => {
 
     let track = getRandomTrack();
     const followed = Math.random() < 0.5;
-    friends.push({ userName, userImg, track, followed });
+    friends.push({ userName, userImg, track, followed,id:i});
   }
 
   return friends; 
