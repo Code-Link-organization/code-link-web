@@ -29,9 +29,17 @@ const teamsSlice = createSlice({
     },
     setTeams:(state,action)=>{
         state.teams=action.payload
+    },
+    deleteMember:(state,action)=>{
+      const removedUserid=action.payload.userId;
+      const Editedteam=state.teams.find(team=> action.payload.teamId==team.teamId)
+      const EditedteamIndex=state.teams.findIndex(team=>action.payload.teamId==team.teamId);
+      const filteredTeamMembers=Editedteam.teamMembers.filter(member=>member.id!=removedUserid)
+      Editedteam.teamMembers=filteredTeamMembers;
+      state.teams[EditedteamIndex]=Editedteam;
     }
   },
 });
 
-export const { addTeam,setTeams } = teamsSlice.actions;
+export const { addTeam,setTeams,deleteMember } = teamsSlice.actions;
 export default teamsSlice.reducer;

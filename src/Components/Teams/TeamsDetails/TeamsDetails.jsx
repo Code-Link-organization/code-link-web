@@ -13,7 +13,7 @@ function TeamsDetails() {
 
     <><div className="w-full pt-4 bg-[rgba(252,250,248,1)] px-5  z-10      ">
 
-      <TeamDetailsOptions >
+      <TeamDetailsOptions team={team} >
       <h4 className='text-center text-xl font-medium'>{team.teamName}</h4>
       </TeamDetailsOptions>
 

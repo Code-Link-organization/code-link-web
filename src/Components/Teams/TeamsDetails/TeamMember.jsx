@@ -1,9 +1,18 @@
+/* eslint-disable react/prop-types */
 import deleteIcon from '../../../assets/images/teams/Group 7.svg'
 import imgProfile from '../../../assets/images/posts/comments/Ellipse 27.svg'
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import { deleteMember } from '../../../store/teams/teamsSlice'
+import { toastEmitter } from '../../../Functions/toastEmitter'
  
 function TeamMember({role,image,name,team,memberId}) {
       const userData=useSelector(state=>state.auth).user
+      const dispatch=useDispatch()
+      const deleteMemberHandler=()=>{
+        dispatch(deleteMember({userId:memberId,teamId:team.teamId}))
+        toastEmitter('TeamMember has been deleted successfully')
+      }
+        
     
 
   return (
@@ -12,7 +21,7 @@ function TeamMember({role,image,name,team,memberId}) {
         <img src={image?image:imgProfile} alt={image} />
         <p className='text-[13px] font-semibold   text-center'>{name}</p>
         <p className='text-[10px]   text-center'>{role}</p>
-       {team.adminId ==userData.id&&userData.id !=memberId && <button className='absolute right-2 top-2'><img src={deleteIcon}/></button>}
+       {team.adminId ==userData.id&&userData.id !=memberId && <button onClick={deleteMemberHandler}  className='absolute right-2 top-2'><img src={deleteIcon}/></button>}
     </div>
   )
 }
