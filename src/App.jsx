@@ -74,7 +74,7 @@ const router=createBrowserRouter(
    element:<CreateTeamForm/> 
    },
    {
-    path:'teamdetails',
+    path:':teamId',
     element:<TeamDetails/>
    }
   ]

@@ -1,4 +1,4 @@
-function getFakeTeamLastName() {
+export function getFakeTeamLastName() {
     const names = [
         "Coders",
         "Breakers",
@@ -21,6 +21,3 @@ function getFakeTeamLastName() {
     const randomIndex = Math.floor(Math.random() * names.length);
     return names[randomIndex];
 }
-
-
-export getFakeTeamLastName

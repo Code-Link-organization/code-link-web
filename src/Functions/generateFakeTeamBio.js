@@ -1,4 +1,4 @@
-function getFakeTeamBio() {
+export function getFakeTeamBio() {
     const names = [
         "Our team pioneers creative solutions through code.",
         "Crafting clean, efficient code with meticulous care.",
@@ -21,4 +21,3 @@ function getFakeTeamBio() {
     const randomIndex = Math.floor(Math.random() * names.length);
     return names[randomIndex];
 }
-export default getFakeTeamBio

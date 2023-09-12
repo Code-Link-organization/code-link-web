@@ -10,8 +10,11 @@ const teamsSlice = createSlice({
       // Add the new team to the state
       state.teams.push(action.payload);
     },
+    setTeams:(state,action)=>{
+        state.teams=action.payload
+    }
   },
 });
 
-export const { addTeam } = teamsSlice.actions;
+export const { addTeam,setTeams } = teamsSlice.actions;
 export default teamsSlice.reducer;
