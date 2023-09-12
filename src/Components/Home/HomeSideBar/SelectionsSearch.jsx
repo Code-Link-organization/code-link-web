@@ -3,6 +3,7 @@ import MentorsImg from '../../../assets/images/home/Product presentation-pana 2.
 import TeamImg from '../../../assets/images/home/Creative team-pana 2.svg'
 import ResourcesImg from '../../../assets/images/home/Pair programming-cuate 2.svg'
 import BoxItem from './BoxItem';
+import SearchField from './SearchField';
 
 function SelectionsSearch() {
     const links = [
@@ -12,7 +13,9 @@ function SelectionsSearch() {
   { imgPath: ResourcesImg, text: 'Resources', path:'/resources' },
 ];
   return (
-    <>            <p className='text-xl my-6 font-normal'>Choose what you want!</p>
+    <>    
+       <SearchField/> 
+            <p className='text-xl my-6 font-normal'>Choose what you want!</p>
    <div className='flex flex-wrap justify-between h-fit  w-full'>
           {links.map((link, index) => (
     <BoxItem key={index} path={link.path} text={link.text} imgPath={link.imgPath}/>

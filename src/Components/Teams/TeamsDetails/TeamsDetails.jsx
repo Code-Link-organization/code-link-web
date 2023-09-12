@@ -1,21 +1,17 @@
-import chatIcon from '../../../assets/images/teams/Layer_1.svg'
 import teamImage from '../../../assets/images/teams/Rectangle 226.svg'
 import TeamMembers from './TeamMembers'
-import closeIcon from '../../../assets/images/teams/icons8-close-50 1 (1).svg'
+import TeamDetailsOptions from './TeamDetailsOptions'
 
-function TeamsDetails() {
+function TeamsDetails({}) {
+
   return (
-    <div className="w-1/4 pt-4 bg-[rgba(252,250,248,1)] px-4 relative z-10   ">
-      <div className='mb-1 flex justify-between'>
-        <button className="dark-btn w-[64px] h-[28px] element-center text-[19px] font-roboto">Edit</button>
-        <button><img src={chatIcon} alt='chat Icon' /></button>
-      </div>
+    <div className="w-full pt-4 bg-[rgba(252,250,248,1)] px-6 relative z-10   ">
 
+      <TeamDetailsOptions >
       <h4 className='text-center text-xl font-roboto'>Team Name</h4>
+      </TeamDetailsOptions>
 
-      <button className='ml-auto block'>
-        <img src={closeIcon} alt='close Icon' />
-      </button>
+
 
       <img src={teamImage} alt='Team Image' className='mx-auto mt-12' />
 

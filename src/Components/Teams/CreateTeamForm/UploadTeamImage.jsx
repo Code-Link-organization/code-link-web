@@ -1,16 +1,15 @@
 /* eslint-disable react/prop-types */
-import imageIcon from '../../../assets/images/posts/image 100.svg'
 
-function UploadImages({setUploadedImage}) {
+function UploadTeamImage({uploadIcon,value,setTeamForm,teamForm}) {
       const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-        setUploadedImage(e.target.files[0])
+        setTeamForm({...teamForm,[value]:e.target.files[0]})
     }
   };
   return (
     <div className='flex'>
       <label htmlFor='file-input' className='cursor-pointer'>
-    <img src={imageIcon}/>
+    <img src={uploadIcon}/>
   </label>
   <input id="file-input" className='hidden' type="file"  onChange={imageChange}/>
 
@@ -19,4 +18,4 @@ function UploadImages({setUploadedImage}) {
   )
 }
 
-export default UploadImages
+export default UploadTeamImage

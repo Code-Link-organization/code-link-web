@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import Header from "../../Components/StartPage/Header"
-import CreateTeamForm from "../../Components/Teams/CreateTeamForm/CreateTeamForm"
-import JoinUs from "../../Components/Teams/JoinUs"
-import TeamChat from "../../Components/Teams/TeamChat/TeamChat"
-import TeamsDetails from "../../Components/Teams/TeamsDetails/TeamsDetails"
+import { CenterContentProvider } from "../../Components/Teams/CenterContent/CenterContentContext"
+
+import TeamsCenterContent from "../../Components/Teams/TeamsCenterContent"
 import TeamsList from "../../Components/Teams/TeamsList/TeamsList"
+import TeamsSideBar from "../../Components/Teams/TeamsSideBar"
 
 function Teams() {
       const [isFixed, setIsFixed] = useState(false);
       const [scroll,setScroll]=useState(false)
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,16 +29,17 @@ function Teams() {
     };
   }, []);
   return (
+    <CenterContentProvider>
     <div className="relative">
-      <div className="">
-            <Header/>
-      </div>
-    <div className="bg-white flex h-screen">
+
+    <div className=" flex h-screen">
       <TeamsList/>
-      <TeamChat isFixed={isFixed} scroll={scroll}/>
-      <TeamsDetails/>
+      <TeamsCenterContent isFixed={isFixed} scroll={scroll}  />
+      <TeamsSideBar  />
     </div>
     </div>
+    </CenterContentProvider>
+
   )
 }
 

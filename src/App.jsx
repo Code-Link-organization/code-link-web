@@ -17,6 +17,8 @@ import FriendsList from './Components/Friends/FriendsList'
 import Friends from "./Components/Friends/FriendsList";
 import Teams from "./Pages/Teams/Teams";
 import Home from "./Pages/Home/Home";
+import CreateTeamForm from "./Components/Teams/CreateTeamForm/CreateTeamForm";
+import TeamDetails from "./Components/Teams/TeamsDetails/TeamsDetails";
 
 const router=createBrowserRouter(
 [{
@@ -44,11 +46,40 @@ const router=createBrowserRouter(
       element:<Verification/>
     },
     {
-      index:true,
       path:'home',
       element:<Home/>,
+       children:[
+   {
+    path:'',
+    element:<SelectionsSearch/>
+   },
 
-    }
+   {
+    path:'friends',
+    element:<Friends/>,
+   },   
+  ]
+    },
+  {
+   path:'/teams',
+   element:<Teams/>,
+  children:[
+   {
+   path:'',
+   element:<SelectionsSearch/>
+
+   },
+   {
+   path:'createteam',
+   element:<CreateTeamForm/> 
+   },
+   {
+    path:'teamdetails',
+    element:<TeamDetails/>
+   }
+  ]
+  }
+
       ]
     }
   ]
@@ -64,11 +95,7 @@ const router=createBrowserRouter(
 //     index:true,
 //     element:<SelectionsSearch/>
 //    },
-   
-//    {
-//     path:'friends',
-//     element:<Friends/>,
-//    },]
+  
 // },{
 //   element:<Teams/>,
 //   path:'/teams',}]

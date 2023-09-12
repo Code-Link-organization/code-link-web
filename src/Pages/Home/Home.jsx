@@ -3,7 +3,6 @@ import HomeContent from '../../Components/Home/HomeContent/HomeContent'
 import {useLoaderData} from 'react-router-dom'
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { setPosts } from '../../store/posts/postsSlice'
 import RequireAuth from '../../Protected/RequireAuth'
 import HomeSideBar from '../../Components/Home/HomeSideBar/HomeSideBar'
 import { useState } from 'react'

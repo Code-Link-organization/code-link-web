@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 function StartPageNav() {
-  const links=[    
+  const userData=useSelector(state=>state.auth)
+  const noLoggedInlinks=[    
     {
     path:'/',
-    text:'Home'
+    text:'Start'
     },
     {
     path:'signup',
@@ -15,10 +17,27 @@ function StartPageNav() {
     },
 
 ]
+ const loggedInLinks=[
+      {
+    path:'/home',
+    text:'Home'
+    },
+    {
+    path:'/profile',
+    text:'Profile'
+    },  
+
+ ]
   return (
                   <ul className='flex items-center gap-14 font-semibold  text-xl'>
                     {
-                      links.map(link=> <li  key={link.path}><NavLink to={link.path} >{link.text}</NavLink></li>)
+                      userData.user &&userData.user.token?
+                    
+                      loggedInLinks.map(link=> <li  key={link.path}><NavLink to={link.path} >{link.text}</NavLink></li>)
+                    :
+                    
+                       noLoggedInlinks.map(link=> <li  key={link.path}><NavLink to={link.path} >{link.text}</NavLink></li>)
+                    
                     }
 
                   </ul>  )

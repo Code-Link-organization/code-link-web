@@ -1,10 +1,11 @@
+import { useSelector } from 'react-redux';
 import profileImg from '../../../assets/images/posts/Ellipse 49.svg';
 import { transferDate } from '../../../Functions/transferDate';
 import EditPost from './EditPost/EditPost';
 
 function PostHeader({ post }) {
-  const { user_name, created_at } = post;
-
+  const { user_name, created_at,user_id } = post;
+  const userData=useSelector(state=>state.auth).user
   return (
     <header className='flex items-center py-4 text-inter justify-between'>
       <div className='space-x-5 flex items-center'>
@@ -16,7 +17,9 @@ function PostHeader({ post }) {
       </div>
       <div className='flex gap-4'>
         <p className='text-sm font-medium'>{transferDate(created_at)}</p>
+        {  user_id===userData.id &&
         <EditPost post={post} />
+        }
       </div>
     </header>
   );
