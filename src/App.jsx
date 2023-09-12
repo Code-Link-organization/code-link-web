@@ -11,14 +11,14 @@ import { useDispatch } from "react-redux";
 import { setSavedUser } from "./store/user/userSlice";
 import Layout from "./Protected/Layout";
 import ResetPassword from "./Components/Forms/ResetPassword";
-import Tracks from "./Components/Friends/Tracks";
 import SelectionsSearch from "./Components/Home/HomeSideBar/SelectionsSearch";
-import FriendsList from './Components/Friends/FriendsList'
 import Friends from "./Components/Friends/FriendsList";
 import Teams from "./Pages/Teams/Teams";
 import Home from "./Pages/Home/Home";
 import CreateTeamForm from "./Components/Teams/CreateTeamForm/CreateTeamForm";
 import TeamDetails from "./Components/Teams/TeamsDetails/TeamsDetails";
+import EditTeamForm from "./Components/Teams/EditTeamForm/EditTeamForm";
+import Mentors from './Pages/Mentors/Mentors'
 
 const router=createBrowserRouter(
 [{
@@ -76,8 +76,20 @@ const router=createBrowserRouter(
    {
     path:':teamId',
     element:<TeamDetails/>
+   },
+   {
+    path:'editeam/:teamId',
+    element:<EditTeamForm/>
    }
   ]
+  },
+  {
+    path:'mentors',
+    element:<Mentors/>,
+    children:[{
+   path:'',
+   element:<SelectionsSearch/>   ,  } 
+    ]
   }
 
       ]
@@ -86,19 +98,6 @@ const router=createBrowserRouter(
 
 )
 
-// const router=createBrowserRouter([{
-//  element:<Home/>,
-//  path:'/',
-//  loader:postsLoader,
-//  children:[
-//    {
-//     index:true,
-//     element:<SelectionsSearch/>
-//    },
-  
-// },{
-//   element:<Teams/>,
-//   path:'/teams',}]
 // )
 function App() {
   const dispatch=useDispatch()
