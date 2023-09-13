@@ -6,7 +6,7 @@ function ResourcesLIistItem({currentResource}) {
      flex items-center px-1 justify-center flex-col rounded-[17px]  text-center text-xs  shadow-[0px_6px_20px_0px_rgba(218,218,218,0.3)] transition-all
       duration-300 hover:bg-gray-100  gap-[1px] mb-3'href='#'>
       <img src={resourceimage} className='w-24' alt='resource image'/>
-      <p className='underline underline-[rgba(217,198,164,1)]'>{currentResource}</p>
+      <p className='underline underline-[rgba(217,198,164,1)]'>{currentResource}  for the beginners</p>
     </a>
   )
 }

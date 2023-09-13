@@ -5,7 +5,7 @@ import { getRandomManImage } from "./generateRandomManImage";
 import { getRandomManName } from "./generateRandomManName";
 import { getRandomTrack } from "./generateRandomTrack";
 
-export const getFriendsFakeData = (number) => {
+export const getFriendsFakeData = (number,track) => {
   const friends = [];
   const usedFullNames = new Set(); // To keep track of used full names
 
@@ -31,10 +31,13 @@ export const getFriendsFakeData = (number) => {
 
     const userName = firstName + ' ' + lastName;
     usedFullNames.add(userName); // Add the used full name to the set
-
-    let track = getRandomTrack();
-    const followed = Math.random() < 0.5;
-    friends.push({ userName, userImg, track, followed,id:i});
+   let userTrack
+   if(track)
+   userTrack = track;
+   else  userTrack = getRandomTrack();
+   
+   const followed = Math.random() < 0.5;
+    friends.push({ userName, userImg, track:userTrack, followed,id:i});
   }
 
   return friends; 
