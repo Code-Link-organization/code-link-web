@@ -4,8 +4,9 @@ import OTPInput from "react-otp-input"
 import { useDispatch, useSelector } from "react-redux"
 import { verifyAction } from "../../store/user/verifyAction"
 import { sendEmail } from "../../store/user/SendEmail"
-import {Navigate, useNavigate} from 'react-router-dom';
-import { redirect } from "react-router-dom";
+import {Navigate} from 'react-router-dom';
+import StartPage from "../../Pages/AuthPages/StartPage"
+import StartPageHome from "../StartPage/StartPageLayout"
 
 
 
@@ -26,9 +27,11 @@ function Verification() {
     const resendCode=()=>{
       dispatch(sendEmail({formData:toFormData([{name:'email',value:userData.user.email}])}))
     }
-    if(userData &&(userData.user | !userData.forgetPassword)) return <Navigate to='/'/>
+    console.log(userData)
+    if(!userData.user) return <Navigate to='/' replace={true}/>
+    if(userData.user && userData.verified) return <Navigate to='/home' replace={true}/>
   return (
-  <>
+  <StartPageHome>
         <div className="flex flex-col gap-8">
         <h4 className="text-center text-xl text-[rgba(0,0,0,1)] font-medium">Enter your code here</h4>
        <form className="flex flex-col gap-8 items-center" onSubmit={submitOtp}>
@@ -50,7 +53,7 @@ function Verification() {
         className="text-primary hover:border-b-primary border-b-transparent duration-300 transition-all border-b-2 ">Resend
         </button></p>
     </div>
-  </>
+  </StartPageHome>
   )
 }
 

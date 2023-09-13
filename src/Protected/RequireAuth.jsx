@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
+import {Navigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {Navigate,useNavigate} from 'react-router-dom';
 
 function RequireAuth({children}) {
-    const userData=useSelector(state=>state.auth).user
-    const navigate=useNavigate()
+  const userData=useSelector(state=>state.auth)
   
-  console.log(userData)
 
-    if(!localStorage.getItem('user')&& !userData && !userData?.token){
-                    return   <Navigate to ='/' replace/>
+    if(!localStorage.getItem('token') && !userData.user ){
+            return   <Navigate to ='/' replace={true}/>
 
     }
+        if(userData.user && !userData.verified) return<Navigate to='/verification'/>
 
-               return children
+
+  return children
 
 
     

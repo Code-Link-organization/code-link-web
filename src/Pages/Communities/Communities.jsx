@@ -6,6 +6,7 @@ import LandingScreen from "../../Components/GlobalComponents/LandingScreen"
 import SearchField from "../../Components/GlobalComponents/SearchField"
 import SideBar from "../../Components/SideBar/SideBar"
 import { getFriendsFakeData } from "../../Functions/getFriendsFakeData"
+import RequireAuth from "../../Protected/RequireAuth"
 import Community from "./Community"
 
 function Communities() {
@@ -15,6 +16,7 @@ function Communities() {
   setCommunitiesPersons(getFriendsFakeData(10,currentCommunity))
   },[currentCommunity])
   return (
+    <RequireAuth>
     <div className="h-[calc(100vh-_99px)] flex">
       {/* Left Sidebar */}
       <div className="w-1/4 px-9 overflow-y-auto custom-scrollbar h-full pt-7">
@@ -31,7 +33,9 @@ function Communities() {
       {!currentCommunity?<SideBar />:
       <Community users={communitiesPersons}/>}
       
-    </div>
+    </div>      
+    </RequireAuth>
+
   )
 }
 

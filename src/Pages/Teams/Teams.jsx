@@ -5,6 +5,7 @@ import { CenterContentProvider } from "../../Components/Teams/CenterContent/Cent
 import TeamsCenterContent from "../../Components/Teams/TeamsCenterContent"
 import TeamsList from "../../Components/Teams/TeamsList/TeamsList"
 import TeamsSideBar from "../../Components/Teams/TeamsSideBar"
+import RequireAuth from "../../Protected/RequireAuth"
 
 function Teams() {
       const [scroll,setScroll]=useState(false)
@@ -12,6 +13,7 @@ function Teams() {
 
 
   return (
+    <RequireAuth>
     <CenterContentProvider>
 
     <div className=" flex h-[calc(100vh_-_99px)] overflow-y-hidden">
@@ -21,6 +23,7 @@ function Teams() {
     </div>
     </CenterContentProvider>
 
+    </RequireAuth>
   )
 }
 

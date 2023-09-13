@@ -1,14 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import { useDispatch , useSelector} from "react-redux";
-import { Outlet, useLocation,useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import NoRequire from "../../Protected/NoRequire";
 import { errorsToNull } from "../../store/user/userSlice";
 import { content } from "./content";
 import useChangeContent from "./useChangeContent";
-function StartPageHome() {
+function StartPageLayout({children}) {
   const {currentContent,activeContent}=useChangeContent(content.length)
-  const location=useLocation()
   const dispatch=useDispatch()
 
 
@@ -18,7 +16,7 @@ function StartPageHome() {
  
 
   return( 
-   <NoRequire>
+   <>
        <div className="flex flex-row-reverse h-[calc(100vh_-_100px)] container ">
       <div className="w-1/2 flex items-center flex-col h-full justify-center ">
         {location.pathname === "/" ? (
@@ -29,7 +27,7 @@ function StartPageHome() {
             </Link>
           </>
         ) : (
-          <Outlet></Outlet>
+          children
         )}
 
       </div>
@@ -41,7 +39,7 @@ function StartPageHome() {
         <img src={content[currentContent].imgPath} alt="start-img" className="w-[80%]" />
       </div>
     </div>
-   </NoRequire>);
+   </>);
   
 }
-export default StartPageHome;
+export default StartPageLayout;

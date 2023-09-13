@@ -1,5 +1,5 @@
 import logo from '../../assets/images/logo.svg'
-import StartPageNav from './StartPageNav'
+import StartPageNav from './NavBar'
 import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 

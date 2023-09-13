@@ -1,36 +1,18 @@
-import { useSelector } from 'react-redux';
-import StartPageHome from '../Components/StartPage/StartPageHome';
-import {Navigate, Outlet, useNavigate} from 'react-router-dom'
-import Header from '../Components/StartPage/Header';
-import { useEffect } from 'react';
+import { Outlet, redirect} from 'react-router-dom'
+import Header from '../Components/GlobalComponents/Header';
+import {useSelector} from 'react-redux'
 function Layout() {
- const userData=useSelector(state=>state.auth)
- const navigate=useNavigate()
-
-    useEffect(()=>{
-    console.log(userData)
-   if(userData && userData.forgetPassword && userData.verified){
-    navigate('/resetpassword')
-  }    
-  if(userData &&userData.user && userData.verified){
-    navigate('/home')
-  }
-  else if(userData &&userData.user && !userData.verified){
-    navigate('/verification')
-  }
-
-
- },[userData])
-  
-  
+  const userData=useSelector(state=>state.auth).user
+ if(userData && userData.token){
+  redirect('/home')
+ }  
   return (
 
     <>
     <Header/>
-  { userData.user && userData.user.token?
-    <Outlet/>:
-    <StartPageHome/>
-  }
+    <Outlet/>
+  
+  
 
     </>
   )

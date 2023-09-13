@@ -4,10 +4,12 @@ import LandingScreen from "../../Components/GlobalComponents/LandingScreen";
 import SearchField from "../../Components/GlobalComponents/SearchField";
 import SideBar from "../../Components/SideBar/SideBar";
 import ResourcesList from "./ResourcesList/ResourcesList";
+import RequireAuth from '../../Protected/RequireAuth'
 
 function Resources() {
   const [currentResource,setCurentResource]=useState(null)
   return (
+   <RequireAuth>
     <div className="h-[calc(100vh-_99px)] flex">
       {/* Left Sidebar */}
       <div className="w-1/4 px-9 overflow-y-auto custom-scrollbar h-full pt-7">
@@ -26,6 +28,8 @@ function Resources() {
       <ResourcesList currentResource={currentResource}/>
       }
     </div>
+
+   </RequireAuth>
   );
 }
 
