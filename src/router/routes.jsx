@@ -18,6 +18,7 @@ import Resources from '../Pages/Resources/Resources';
 import Teams from '../Pages/Teams/Teams';
 import Layout from '../Protected/Layout';
 
+ 
 export const router = createBrowserRouter([
   {
     path: '/',
