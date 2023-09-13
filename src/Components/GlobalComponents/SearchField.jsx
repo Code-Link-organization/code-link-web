@@ -1,4 +1,4 @@
-import searchIcon from '../../../assets/images/home/image 43 (1).svg'
+import searchIcon from '../../assets/images/global/searchIcon.svg'
 
 function SearchField() {
   return (

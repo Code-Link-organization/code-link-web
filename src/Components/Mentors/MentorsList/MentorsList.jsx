@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { getFakeMentors } from "../../../Functions/getFakeMentors"
-import SearchField from "../../Home/HomeSideBar/SearchField"
+import SearchField from "../../GlobalComponents/SearchField"
 import MentorsListItem from "./MentorsListItem"
 
 function MentorsList({setSelectedChat}) {

@@ -1,13 +1,13 @@
 import AndroidImage from '../assets/images/tracks/Android.svg';
-import AIImage from '../assets/images/tracks/AI.svg';
-import BackEndImage from '../assets/images/tracks/Backend.svg';
-import FrontEndImage from '../assets/images/tracks/FrontEnd.svg';
-import EmbeddedSystemsImage from '../assets/images/tracks/EmbeddedSystems.svg';
-import CyberSecurityImage from '../assets/images/tracks/CyberSecurity.svg';
+import AIImage from '../assets/images/tracks/Android.svg';
+import BackEndImage from '../assets/images/tracks/Back End.svg';
+import FrontEndImage from '../assets/images/tracks/Front End.svg';
+import EmbeddedSystemsImage from '../assets/images/tracks/Embedded Systems.svg';
+import CyberSecurityImage from '../assets/images/tracks/Cyber Security.svg';
 import IOSImage from '../assets/images/tracks/IOS.svg';
-import DataScienceImage from '../assets/images/tracks/Datascience.svg';
+import DataScienceImage from '../assets/images/tracks/Data Science.svg';
 import FlutterImage from '../assets/images/tracks/Flutter.svg';
-import UiUxImage from '../assets/images/tracks/UIUX.svg';
+import UiUxImage from '../assets/images/tracks/UI-UX design.svg';
 
 const tracks = [
   {

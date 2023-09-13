@@ -19,6 +19,8 @@ import CreateTeamForm from "./Components/Teams/CreateTeamForm/CreateTeamForm";
 import TeamDetails from "./Components/Teams/TeamsDetails/TeamsDetails";
 import EditTeamForm from "./Components/Teams/EditTeamForm/EditTeamForm";
 import Mentors from './Pages/Mentors/Mentors'
+import Resources from "./Pages/Resources/Resources";
+import Communities from "./Pages/Communities/Communities";
 
 const router=createBrowserRouter(
 [{
@@ -90,7 +92,25 @@ const router=createBrowserRouter(
    path:'',
    element:<SelectionsSearch/>   ,  } 
     ]
-  }
+  },
+  {
+    path:'resources',
+    element:<Resources/>,
+    children:[{
+   path:'',
+   element:<SelectionsSearch/>,} 
+    ]
+
+  },
+  {
+    path:'communities',
+    element:<Communities/>,
+    children:[{
+   path:'',
+   element:<SelectionsSearch/>,} 
+    ]
+
+  }  
 
       ]
     }

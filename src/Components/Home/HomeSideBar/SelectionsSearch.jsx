@@ -5,7 +5,7 @@ import ResourcesImg from '../../../assets/images/home/Pair programming-cuate 2.s
 import communities from '../../../assets/images/home/Connected world-pana 1 (1).svg'
 import Hackathons from '../../../assets/images/home/Team goals-amico 1 (1).svg'
 import BoxItem from './BoxItem';
-import SearchField from './SearchField';
+import SearchField from '../../GlobalComponents/SearchField'
 
 function SelectionsSearch() {
     const links = [

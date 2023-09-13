@@ -1,18 +1,16 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
-import SearchField from "../../Home/HomeSideBar/SearchField"
 import createTeamIcon from '../../../assets/images/teams/double-team-svgrepo-com 2.svg'
 import TeamItemList from "./TeamItemList"
 import { useNavigate } from "react-router-dom"
-import { useCenterContent } from "../CenterContent/CenterContentContext"
 import { useEffect } from "react"
-import { generateFakeTeamImage } from "../../../Functions/generateFakeTeamsImages"
 import { setTeams } from "../../../store/teams/teamsSlice"
 import {useDispatch,useSelector} from 'react-redux'
 import { getRandomTeamsData } from "../../../Functions/generateFakeTeams"
+import SearchField from '../../GlobalComponents/SearchField'
 
 function TeamsList({isFixed}) {
   const navigate=useNavigate()
-    const { centerContent, setCenterContent } = useCenterContent();
     const dispatch=useDispatch()
     const teams=useSelector(state=>state.teams).teams
     useEffect(()=>{
