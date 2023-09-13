@@ -105,6 +105,7 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(sendEmail.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.loading = false;
         state.error = null;
         state.user = action.payload.user;

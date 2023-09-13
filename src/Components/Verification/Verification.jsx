@@ -27,8 +27,8 @@ function Verification() {
     const resendCode=()=>{
       dispatch(sendEmail({formData:toFormData([{name:'email',value:userData.user.email}])}))
     }
-    console.log(userData)
     if(!userData.user) return <Navigate to='/' replace={true}/>
+    if(userData.user && userData.verified &&userData.forgetPassword) return <Navigate to='/resetpassword' replace={true}/>
     if(userData.user && userData.verified) return <Navigate to='/home' replace={true}/>
   return (
   <StartPageHome>

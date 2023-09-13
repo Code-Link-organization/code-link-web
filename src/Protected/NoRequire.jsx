@@ -4,10 +4,15 @@
 import { useSelector } from 'react-redux';
 import { Navigate} from 'react-router-dom';
 import ReactLoading from 'react-loading';
+import { useEffect } from 'react';
 
 function NoRequire({children}) {
     const userData=useSelector(state=>state.auth)
+   useEffect(()=>{
+    console.log(userData)
 
+   },[userData])
+      if(userData.user && userData.verified &&userData.forgetPassword) return <Navigate to='/resetpassword' replace={true}/> 
     if(localStorage.getItem('token')  &&userData.user ){
 
         return  <Navigate to='/home' replace={true}/>

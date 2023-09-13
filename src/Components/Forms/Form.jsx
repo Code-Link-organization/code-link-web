@@ -9,7 +9,6 @@ import {Navigate,useNavigate} from 'react-router-dom';
 
 
 function Form({initalValues,submitAction,inputs,children,type,token}) {
-     const user = useSelector(state=>state.auth)
      const dispatch = useDispatch()
 
      const [formData,setFormData] = useState(initalValues)

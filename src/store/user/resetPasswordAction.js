@@ -8,6 +8,7 @@ export const resetPassword = createAsyncThunk(
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
+      console.log(data.token)
       const res = await fetch(`${api}/user/reset-password`,{
         method:'POST',
               headers: {
@@ -17,10 +18,8 @@ export const resetPassword = createAsyncThunk(
       body:data.formData
       });
       const resData=await res.json()
-     if(res.ok){
+     if(!res.ok){
             toastEmitter(resData.message,'error')
-
-
       throw resData.errors
      }
            toastEmitter(resData.message)

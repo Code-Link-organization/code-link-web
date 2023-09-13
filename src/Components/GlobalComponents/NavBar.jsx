@@ -43,7 +43,7 @@ function StartPageNav() {
                   <ul className='flex items-center gap-14 font-semibold  text-xl'>
                     {
                       userData.user ?
-                     userData.user.token?
+                  !userData.forgetPassword &&userData.user.token?
                       loggedInLinks.map(link=> <li  key={link.path}><NavLink to={link.path} >{link.text}</NavLink></li>):null
                     :
                     
