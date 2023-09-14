@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFriendsFakeData } from '../../Functions/getFriendsFakeData';
 import { fetchTeams } from './fetchTeams';
 
 const teamsSlice = createSlice({
@@ -11,13 +10,23 @@ const teamsSlice = createSlice({
     addTeam: (state, action) => {
       // Add the new team to the state
 
-      state.teams.push(action.payload.team);
+      state.teams.push(action.payload);
     },
     deleteTeam:(state,action)=>{
           const updatedTeams = state.teams.filter((team) => team.id !== action.payload);
           state.teams=updatedTeams;
           console.log(action.payload)
 
+
+    },
+    editTeam:(state,action)=>{
+    const updatedTeams = state.teams.map((team) => {
+      if (team.id === action.payload.id) {
+        return {...action.payload};
+      }
+      return team;
+    });
+    state.teams=updatedTeams;
 
     },
     setTeams:(state,action)=>{
@@ -40,5 +49,5 @@ const teamsSlice = createSlice({
   } 
 });
 
-export const { addTeam,setTeams,deleteMember,deleteTeam } = teamsSlice.actions;
+export const { addTeam,setTeams,deleteMember,deleteTeam,editTeam } = teamsSlice.actions;
 export default teamsSlice.reducer;
