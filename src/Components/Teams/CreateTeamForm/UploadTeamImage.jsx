@@ -3,7 +3,7 @@
 function UploadTeamImage({uploadIcon,value,setTeamForm,teamForm}) {
       const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-        setTeamForm({...teamForm,[value]:URL.createObjectURL(e.target.files[0])})
+        setTeamForm({...teamForm,[value]:e.target.files[0]})
     }
   };
   return (

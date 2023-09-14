@@ -15,6 +15,7 @@ function useFetch(url, options) {
       console.log(resData)
 
       if (!response.ok) {
+            toastEmitter(resData.message)
         throw resData.message;
       }
     console.log({...resData,ok:response.ok})

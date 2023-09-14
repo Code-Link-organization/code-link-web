@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getFriendsFakeData } from '../../Functions/getFriendsFakeData';
+import { fetchTeams } from './fetchTeams';
 
 const teamsSlice = createSlice({
   name: 'teams',
@@ -9,23 +10,15 @@ const teamsSlice = createSlice({
   reducers: {
     addTeam: (state, action) => {
       // Add the new team to the state
-      const newTeamData=action.payload.teamData;
-      const admin={
-        track:'fronted',
-        followed:true,
-        id:action.payload.admin.id,
-        userImg:null,
-        userName:action.payload.admin.name,
-      }
-      const teamMembers= [admin,...getFriendsFakeData(5)]
-      const newTeam={
-        teamName:newTeamData.nameofTeam, teamBio:newTeamData.description,
-         teamImage:action.payload.admin.image, 
-        teamMembers,
-        adminId:action.payload.admin.id,
-        teamId:state.teams.length+1,
-      }
-      state.teams.push(newTeam);
+
+      state.teams.push(action.payload.team);
+    },
+    deleteTeam:(state,action)=>{
+          const updatedTeams = state.teams.filter((team) => team.id !== action.payload);
+          state.teams=updatedTeams;
+          console.log(action.payload)
+
+
     },
     setTeams:(state,action)=>{
         state.teams=action.payload
@@ -39,7 +32,13 @@ const teamsSlice = createSlice({
       state.teams[EditedteamIndex]=Editedteam;
     }
   },
+  extraReducers:(builder) => {
+    builder.addCase(fetchTeams.fulfilled, (state, action) => {
+      console.log(action.payload)
+      state.teams = action.payload.teams;
+    });
+  } 
 });
 
-export const { addTeam,setTeams,deleteMember } = teamsSlice.actions;
+export const { addTeam,setTeams,deleteMember,deleteTeam } = teamsSlice.actions;
 export default teamsSlice.reducer;
