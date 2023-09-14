@@ -3,7 +3,7 @@ import WaitingScreen from "./WaitingScreen"
 import TeamChat from './TeamChat/TeamChat'
 import { useCenterContent } from "./CenterContent/CenterContentContext";
 function TeamsCenterContent({isFixed,scroll}) {
-      const { centerContent, setCenterContent } = useCenterContent();
+      const { centerContent } = useCenterContent();
 
 
     if(!centerContent) {
