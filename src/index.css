@@ -13,6 +13,9 @@ font-family: 'Mulish', sans-serif;
   .container {
     @apply px-[10px] mx-auto;
   }
+  .btn-hover{
+    @apply border-2 border-solid border-transparent hover:border-white transition-all duration-300
+  }
   .element-center {
     @apply flex justify-center items-center;
   }

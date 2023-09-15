@@ -51,7 +51,7 @@ function EditTeam({ team, teamForm, setTeamForm }) {
         <button
           type="submit"
           onClick={editHandler}
-          className="btn w-[220px] block mx-auto h-14 mt-10"
+          className="btn w-[220px] block mx-auto h-14 mt-10 btn-hover "
         >
           Save
         </button>

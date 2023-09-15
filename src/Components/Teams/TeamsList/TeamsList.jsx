@@ -3,20 +3,12 @@
 import createTeamIcon from '../../../assets/images/teams/double-team-svgrepo-com 2.svg'
 import TeamItemList from "./TeamItemList"
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
-import { setTeams } from "../../../store/teams/teamsSlice"
-import {useDispatch,useSelector} from 'react-redux'
-import { getRandomTeamsData } from "../../../Functions/generateFakeTeams"
+import {useSelector} from 'react-redux'
 import SearchField from '../../GlobalComponents/SearchField'
-import { fetchTeams } from '../../../store/teams/fetchTeams'
 function TeamsList({isFixed}) {
   const navigate=useNavigate()
-  const dispatch=useDispatch()
   const teams=useSelector(state=>state.teams).teams
-  useEffect(()=>{
-    dispatch(fetchTeams())
-
-  },[])
+ 
 
 
   return (

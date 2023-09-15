@@ -6,9 +6,9 @@ import TeamMessagesContainer from './TeamMessagesContainer';
 function TeamChat() {
 
   return (
-    <div className="w-1/2">
+    <div className="w-1/2 ">
       <div
-        className={`!bg-[rgba(252,250,248,1)]   flex flex-col z-2  border-[rgba(209,208,208,1)] border-[1px]`} >
+        className={`!bg-[rgba(252,250,248,1)] h-[calc(100vh_-_99px)]   flex flex-col z-2  border-[rgba(209,208,208,1)] border-[1px]`} >
         <TeamChatHeader />
         <TeamMessagesContainer/>
         <div className="b-t-primary border-t-[1px] mt-auto relative z-0">

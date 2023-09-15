@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import  { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import uploadIcon from '../../../assets/images/teams/Layer_1.svg';
 import CreateTeamInput from '../CreateTeamForm/CreateTeamInput';
 import UploadTeamImage from '../CreateTeamForm/UploadTeamImage';
@@ -16,9 +16,10 @@ function EditTeamForm() {
     description: '',
     image: null,
   });
+  const user=useSelector(state=>state.auth).user
   const [uploadFromDevice, setUploadFromDevice] = useState(false);
   const teams = useSelector((state) => state.teams).teams;
-  const team = teams.find((t) => t.id === teamId);
+  const team = teams.find((t) =>{   return  t.id == teamId});
 
   useEffect(() => {
     if (team) {
@@ -29,13 +30,14 @@ function EditTeamForm() {
       });
     }
   }, [team]);
-
+  if(team){
+  if(team.leader_id!=user.id) return <Navigate to='/teams' replace={true}/>
   return (
     <div className="w-full bg-[rgba(252,250,248,1)]  z-10 relative pt-20">
       <DeleteTeam team={team ? team : null} />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-[375px] mx-auto element-center flex-col"
+        className="w-[375px] mx-auto element-center flex-col mt-4"
       >
         <div className="relative w-[250px] h-[250px] mx-auto  element-center rounded-full bg-white">
           <img
@@ -74,7 +76,7 @@ function EditTeamForm() {
         <EditTeam setTeamForm={setTeamForm} teamForm={teamForm} team={team} />
       </form>
     </div>
-  );
+  );}
 }
 
 export default EditTeamForm;

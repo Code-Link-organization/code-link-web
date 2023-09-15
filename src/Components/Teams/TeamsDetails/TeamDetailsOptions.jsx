@@ -4,6 +4,8 @@ import chatIcon from '../../../assets/images/teams/Layer_1 (1).svg'
 import { useCenterContent } from '../CenterContent/CenterContentContext';
 import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
+import JoinTeam from '../JoinTeam/JoinTeam';
+import LeaveTeam from '../LeavTeam/LeaveTeam';
 
 function TeamDetailsOptions({children,team}) {
   const navigate=useNavigate()
@@ -15,10 +17,10 @@ function TeamDetailsOptions({children,team}) {
    <>
              <div className='mb-1 flex flex-row-reverse mb-14 justify-between'>
         {
-          joinedTeam && userData.id==team.leader_id?<button onClick={()=>navigate(`/teams/editeam/${team.id}`)} className=" w-[60px] h-[30px] bg-[rgba(217,198,164,1)] rounded-[10px] element-center text-xs">Edit</button>
+          userData.id==team.leader_id?<button onClick={()=>navigate(`/teams/editeam/${team.id}`)} className=" w-[60px] h-[30px] btn-hover bg-[rgba(217,198,164,1)] rounded-[10px] element-center text-xs">Edit</button>
           :
-          joinedTeam && userData.id==team.leader_id?<button className=" w-[60px] h-[30px] bg-[rgba(217,198,164,1)] rounded-[10px] element-center text-xs">Leave</button>:
-            <button className=" w-[60px] h-[30px] bg-[rgba(217,198,164,1)] rounded-[10px] element-center text-xs">Join</button>
+          joinedTeam ? <LeaveTeam team={team}/>:
+           <JoinTeam team={team}/>
 
         }
 

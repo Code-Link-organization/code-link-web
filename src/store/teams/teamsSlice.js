@@ -4,7 +4,8 @@ import { fetchTeams } from './fetchTeams';
 const teamsSlice = createSlice({
   name: 'teams',
   initialState: {
-    teams:[]
+    teams:[],
+    loading:false
   },
   reducers: {
     addTeam: (state, action) => {
@@ -15,7 +16,6 @@ const teamsSlice = createSlice({
     deleteTeam:(state,action)=>{
           const updatedTeams = state.teams.filter((team) => team.id !== action.payload);
           state.teams=updatedTeams;
-          console.log(action.payload)
 
 
     },
@@ -32,19 +32,46 @@ const teamsSlice = createSlice({
     setTeams:(state,action)=>{
         state.teams=action.payload
     },
+    leaveTeam:(state,action)=>{
+          const updatedTeams = state.teams.map((team) => {
+      if (team.id === action.payload.teamId) {
+        const updatedMembers = team.members.filter((member) => member.pivot.user_id !== action.payload.userId);
+        return { ...team, members: updatedMembers };
+      }
+      return team;
+    });
+     state.teams=updatedTeams
+
+    },
+    // addMember:(state,action)=>{
+    // const teamId=action.payload.id
+    // const updatedTeams = state.teams.map((team) => {
+    //   if (team.id  ) {
+    //     const updatedMembers = [...team.members, newMember];
+    //     return { ...team, members: updatedMembers };
+    //   }})
+    // },
     deleteMember:(state,action)=>{
-      const removedUserid=action.payload.userId;
-      const Editedteam=state.teams.find(team=> action.payload.teamId==team.teamId)
-      const EditedteamIndex=state.teams.findIndex(team=>action.payload.teamId==team.teamId);
-      const filteredTeamMembers=Editedteam.teamMembers.filter(member=>member.id!=removedUserid)
-      Editedteam.teamMembers=filteredTeamMembers;
-      state.teams[EditedteamIndex]=Editedteam;
-    }
-  },
+    const updatedTeams = state.teams.map((team) => {
+      if (team.id === action.payload.teamId) {
+        const updatedMembers = team.members.filter((member) => member.id !== action.payload.memberId);
+        return { ...team, members: updatedMembers };
+      }
+      return team;
+    });
+     state.teams=updatedTeams
+    
+    }},
   extraReducers:(builder) => {
     builder.addCase(fetchTeams.fulfilled, (state, action) => {
-      console.log(action.payload)
+      state.loading=false
       state.teams = action.payload.teams;
+      console.log('heaa')
+    });
+        builder.addCase(fetchTeams.pending, (state) => {
+      state.loading = true
+      console.log('heaa')
+
     });
   } 
 });

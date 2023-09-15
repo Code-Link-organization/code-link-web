@@ -2,15 +2,15 @@ import { useState } from "react"
 import { useSelector } from 'react-redux';
 import { toastEmitter } from "../Functions/toastEmitter";
 
-function useFetch(url, options) {
+function useFetch(url, options,request) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const userToken = useSelector(state => state.auth.user.token);
+  const user = useSelector(state => state.auth).user
 
   const fetchApi = async (data) => {
     setLoading(true);
     try {
-      const response = await fetch(url, { ...options(userToken), body: data });
+      const response = await fetch(url, { ...options(user?.token), body: data });
       const resData = await response.json();
       console.log(resData)
 
@@ -18,7 +18,7 @@ function useFetch(url, options) {
             toastEmitter(resData.message)
         throw resData.message;
       }
-    console.log({...resData,ok:response.ok})
+      if(!request)
     toastEmitter(resData.message)
       return {...resData,ok:response.ok};
     } catch (errors) {
