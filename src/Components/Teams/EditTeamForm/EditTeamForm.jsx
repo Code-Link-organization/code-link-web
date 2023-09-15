@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
 import uploadIcon from '../../../assets/images/teams/Layer_1.svg';
 import CreateTeamInput from '../CreateTeamForm/CreateTeamInput';
-import UploadTeamImage from '../CreateTeamForm/UploadTeamImage';
+import UploadImage from '../../GlobalComponents/UploadImage';
 import { imgLink } from '../../../api';
 import DeleteTeam from './DeleteTeam';
 import EditTeam from './EditTeam';
@@ -50,10 +50,10 @@ function EditTeamForm() {
             className="w-[225px] h-[225px]"
           />
           <div alt="upload img icon" className="absolute right-[36px] bottom-[28px]">
-            <UploadTeamImage
+            <UploadImage
               setUploadFromDevice={setUploadFromDevice}
-              setTeamForm={setTeamForm}
-              teamForm={teamForm}
+              setFormData={setTeamForm}
+              formData={teamForm}
               value="image"
               uploadIcon={uploadIcon}
             />

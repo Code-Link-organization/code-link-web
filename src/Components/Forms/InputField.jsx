@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -12,14 +13,14 @@ function InputField({
   value,
   type,
   forgetPassword,
+  initialValue,
+  
 }) {
   const error = useSelector((state) => state.auth.error);
 
   const changeValueHandler = (e) => {
-    const newValue = e.target.value;
-    setFormData({ ...formData, [value]: newValue });
+    setFormData({ ...formData, [value]: e.target.value });
   };
-
   return (
     <div>
       <div className="input-form bg-white">
@@ -27,8 +28,9 @@ function InputField({
           type={type}
           placeholder={placeholder}
           name={value}
-          className="input-field pl-2"
+          className="input-field pl-2 rounded-[15px]"
           onChange={changeValueHandler}
+          defaultValue={initialValue?initialValue:''}
         />
         <img
           src={icon}

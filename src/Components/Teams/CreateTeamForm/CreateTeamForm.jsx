@@ -3,7 +3,7 @@ import uploadIcon from '../../../assets/images/teams/Layer_1.svg';
 import createTeamImg from '../../../assets/images/teams/Team work-amico (3) 3.svg';
 import CreateTeam from './CreateTeam';
 import CreateTeamInput from './CreateTeamInput';
-import UploadTeamImage from './UploadTeamImage';
+import UploadImage from '../../GlobalComponents/UploadImage';
 
 function CreateTeamForm() {
   const [teamForm, setTeamForm] = useState({
@@ -22,7 +22,7 @@ function CreateTeamForm() {
             className='w-[225px] h-[225px]'
           />
           <div alt='upload img icon' className='absolute right-[36px] bottom-[28px]'>
-            <UploadTeamImage setTeamForm={setTeamForm} teamForm={teamForm} value='image' uploadIcon={uploadIcon} />
+            <UploadImage setFormData={setTeamForm} formData={teamForm} value='image' uploadIcon={uploadIcon} />
           </div>
         </div>
         <div className='pt-8 flex flex-col '>

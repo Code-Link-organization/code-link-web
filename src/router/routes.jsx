@@ -121,6 +121,7 @@ export const router = createBrowserRouter([
         element: <Profile />,
         children:[
           {
+            exact:true,
             path:'',
             element:<UserProfile/>
           },

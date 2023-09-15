@@ -32,6 +32,15 @@ const userSlice = createSlice({
         state.forgetPassword = true;
       }
     },
+    editUser:(state,action)=>{
+      console.log(state.user.token,action.payload.user)
+      const editedUser = {
+        token: state.user.token,
+        ...action.payload.user
+      }
+      state.user=editedUser 
+      localStorage.setItem('user', JSON.stringify(editedUser));
+    }
   },
   extraReducers: (builder) => {
        builder
@@ -131,7 +140,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { errorsToNull, setSavedUser } = userSlice.actions;
+export const { errorsToNull, setSavedUser,editUser } = userSlice.actions;
 export const userReducer = userSlice.reducer;
 
 
