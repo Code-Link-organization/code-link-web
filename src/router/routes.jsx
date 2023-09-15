@@ -17,6 +17,8 @@ import Profile from '../Pages/Profile/Profile';
 import Resources from '../Pages/Resources/Resources';
 import Teams from '../Pages/Teams/Teams';
 import Layout from '../Protected/Layout';
+import UserProfile from '../Components/Profile/UserProfile/UserProfile';
+import EditProfile from '../Components/Profile/EditProfile/EditProfile';
 
  
 export const router = createBrowserRouter([
@@ -116,7 +118,17 @@ export const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <Profile />
+        element: <Profile />,
+        children:[
+          {
+            path:'',
+            element:<UserProfile/>
+          },
+          {
+            path:'/profile/edit',
+            element:<EditProfile/>
+          }
+        ]
       }
     ]
   }
