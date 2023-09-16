@@ -4,9 +4,10 @@ import {useSelector} from 'react-redux'
 import {  imgLink } from '../../../api';
 import JoinTeam from '../JoinTeam/JoinTeam';
 import LeaveTeam from '../LeavTeam/LeaveTeam';
-function TeamItemList({team}) {
+function TeamItemList({team,teams}) {
+  const selectedTeam=teams.find(t=>t.id==team.id)
     const userData=useSelector(state=>state.auth).user
-   const joinedTeam=team.members?.find(user=>user.id==userData.id)
+   const joinedTeam=selectedTeam.members?.find(user=>user.id==userData.id)
   const navigate=useNavigate()
 
   return (

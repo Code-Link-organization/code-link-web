@@ -24,7 +24,7 @@ function TeamDetailsOptions({children,team}) {
 
         }
 
-        <button><img src={chatIcon} onClick={()=>setCenterContent('chat')} alt='chat Icon' /></button>
+       {joinedTeam && <button><img src={chatIcon} onClick={()=>setCenterContent('chat')} alt='chat Icon' /></button>}
       </div>
 
       {children}

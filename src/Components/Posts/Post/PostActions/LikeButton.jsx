@@ -1,13 +1,18 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import likeIcon from '../../../../assets/images/posts/icons8-like-24 2.svg';
 import useFetch from '../../../../CustomHooks/useFetch';
 import { postOptions } from '../../../../options';
+import { fetchLikesForPost } from '../../../../store/posts/fetchLikesForPost';
+import { fetchPosts } from '../../../../store/posts/fetchPosts';
 
 const user_id = 2;
 
 function LikeButton({ post, usersLikesThisPost }) {
   const { fetchApi: likePost } = useFetch(`http://localhost:8000/api/posts/${post.id}/like`, postOptions);
   const [userLikedPost, setUserLikedPost] = useState(false);
+  const dispatch=useDispatch()
 
 
 
@@ -19,6 +24,9 @@ function LikeButton({ post, usersLikesThisPost }) {
     const resData = await likePost();
     if (resData.ok) {
       setUserLikedPost(!userLikedPost);
+    dispatch(fetchPosts())
+    dispatch(fetchLikesForPost(resData.data.post_id))
+
     }
   };
 

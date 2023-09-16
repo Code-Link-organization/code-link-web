@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react"
 import { useState } from "react"
-import Tracks from "../../Components/Friends/Tracks"
+import Tracks from "../../Components/Individuals/Tracks"
 import LandingScreen from "../../Components/GlobalComponents/LandingScreen"
 import SearchField from "../../Components/GlobalComponents/SearchField"
 import SideBar from "../../Components/SideBar/SideBar"

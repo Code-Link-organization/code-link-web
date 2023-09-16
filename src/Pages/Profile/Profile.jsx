@@ -5,10 +5,12 @@ import { useDispatch } from 'react-redux'
 import { logOut } from '../../store/user/logOutAction'
 import { useEffect } from 'react'
 import { fetchPosts } from '../../store/posts/fetchPosts'
+import { fetchTeams } from '../../store/teams/fetchTeams'
 function Profile() {
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(fetchPosts())
+    dispatch(fetchTeams())
   },[])
 
   return (

@@ -10,7 +10,7 @@ function TeamsDetails() {
   const teams=useSelector(state=>state.teams).teams;
   const team=teams.find(team=>team.id==teamId)
   const userData=useSelector(state=>state.auth).user
-  if(team)
+  if(team &&userData)
   return (
 
     <><div className="w-full pt-4 bg-[rgba(252,250,248,1)] px-5  z-10      ">
@@ -27,7 +27,7 @@ function TeamsDetails() {
         
         <span className='absolute left-0 w-full h-[6px] bg-[rgba(235,235,235,1)] '></span>
         <TeamMembers team={team} />
-    {userData.id==team.leader_id&&<JoinRequestsList team={team} teamId={teamId}/>}
+    {userData.id==team.leader_id?<JoinRequestsList team={team} teamId={teamId}/>:null}
     </div>
     </>
   )

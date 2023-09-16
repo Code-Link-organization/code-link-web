@@ -9,7 +9,7 @@ import SearchField from '../../GlobalComponents/SearchField'
 
 function SelectionsSearch() {
     const links = [
-  { imgPath: FriendsImg, text: 'Friends',path:'friends' },
+  { imgPath: FriendsImg, text: 'Individuals',path:'individuals' },
   { imgPath: MentorsImg, text: 'Mentors',path:'/mentors' },
   { imgPath: TeamImg, text: 'Teams',path:'/teams' },
   { imgPath: ResourcesImg, text: 'Resources', path:'/resources' },

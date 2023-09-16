@@ -12,7 +12,7 @@ function Contacts({ githubUrl, linkedinUrl, behanceUrl, facebookUrl, twitterUrl 
     { name: 'Behance', url: behanceUrl, icon: BehanceIcon },
     { name: 'Facebook', url: facebookUrl, icon: FacebookIcon  },
     { name: 'Twitter', url: twitterUrl, icon: TwitterIcon },
-  ].filter(item => item.url.length > 6);
+  ].filter(item => item.url&& item.url.length > 6);
 
   return (
     <div className='pt-4'>

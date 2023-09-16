@@ -7,6 +7,7 @@ import { postOptions } from "../../../../../options";
 import { addComment } from "../../../../../store/posts/postsSlice";
 import ReactLoading from 'react-loading';
 import { useDispatch } from 'react-redux';
+import { fetchPosts } from "../../../../../store/posts/fetchPosts";
 
 function CreateCommentForm({ id }) {
   const { fetchApi: createComment, loading } = useFetch(`http://localhost:8000/api/posts/${id}/comments/create`, postOptions);
@@ -19,6 +20,7 @@ function CreateCommentForm({ id }) {
       const resData = await createComment(toFormData([{ name: 'content', value: comment }]));
       if (resData.ok) {
         dispatch(addComment({ comments: resData.data.comments, postId: id }));
+        dispatch(fetchPosts())
       }
       setComment('')
     }

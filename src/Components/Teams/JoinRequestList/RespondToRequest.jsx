@@ -6,10 +6,11 @@ import { postOptions } from "../../../options"
 import ReactLoading from 'react-loading';
 
 import {useNavigate} from 'react-router-dom'
+import { addMember } from "../../../store/teams/teamsSlice";
 
 function RespondToRequest({response,request,setJoinRequestsList}) {
     const {fetchApi: respondToRequest,loading}=useFetch(`${api}/join-requests/${response}-join/${request.id}`,postOptions)
-    const navigate=useNavigate()    
+    const dispatch=useDispatch()
     const clickHandler=async()=>{
     const resData= await respondToRequest()
     if(resData.ok ){
@@ -17,7 +18,9 @@ function RespondToRequest({response,request,setJoinRequestsList}) {
             const updated=prevRequests.filter(req=>request.id!=req.id)
             return updated
         })
-        navigate(0)
+        if(response=='accept'){
+          dispatch(addMember({newMember:resData.data.accepted_user,id:resData.data.team_id}))
+        }
  
         
     }

@@ -43,14 +43,20 @@ const teamsSlice = createSlice({
      state.teams=updatedTeams
 
     },
-    // addMember:(state,action)=>{
-    // const teamId=action.payload.id
-    // const updatedTeams = state.teams.map((team) => {
-    //   if (team.id  ) {
-    //     const updatedMembers = [...team.members, newMember];
-    //     return { ...team, members: updatedMembers };
-    //   }})
-    // },
+    addMember:(state,action)=>{
+    const teamId=action.payload.id
+    const updatedTeams = state.teams.map((team) => {
+      if (team.id==teamId  ) {
+        const updatedMembers = [...team.members, action.payload.newMember];
+        return { ...team, members: updatedMembers };
+      
+      }
+      else{
+        return team
+      }
+    })
+      state.teams=updatedTeams;
+    },
     deleteMember:(state,action)=>{
     const updatedTeams = state.teams.map((team) => {
       if (team.id === action.payload.teamId) {
@@ -66,15 +72,13 @@ const teamsSlice = createSlice({
     builder.addCase(fetchTeams.fulfilled, (state, action) => {
       state.loading=false
       state.teams = action.payload.teams;
-      console.log('heaa')
     });
         builder.addCase(fetchTeams.pending, (state) => {
       state.loading = true
-      console.log('heaa')
 
     });
   } 
 });
 
-export const { addTeam,setTeams,deleteMember,deleteTeam,editTeam } = teamsSlice.actions;
+export const { addTeam,setTeams,deleteMember,deleteTeam,editTeam ,addMember,leaveTeam} = teamsSlice.actions;
 export default teamsSlice.reducer;

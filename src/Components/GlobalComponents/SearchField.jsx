@@ -1,9 +1,27 @@
+/* eslint-disable react/prop-types */
 import searchIcon from '../../assets/images/global/searchIcon.svg'
 
-function SearchField() {
+function SearchField({setKeyWord,getSearch,setCurrent,type}) {
+
+  
+  const changeHandler=async(e)=>{
+    setKeyWord(e.target.value);
+    const resData=await getSearch();
+    if(resData.ok && type=='users'){
+    setCurrent(resData.data.users)
+    }
+    else if(resData.ok && type=='teams'){
+      setCurrent(resData.data.teams)
+    }
+
+
+
+
+  }
   return (
       <div className="relative w-full bg-white  rounded-2xl  shadow-[0px_6px_20px_0px_rgba(218,218,218,0.3)] ">
       <input
+        onChange={changeHandler}
         type="text"
         placeholder="Search..."
         className="  py-4 pl-10 pr-8  border w-full  rounded-2xl outline-none border-none focus:outline-none focus:ring focus:border-blue-500"

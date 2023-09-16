@@ -3,15 +3,16 @@ import TeamButton from "../TeamButton"
 import ReactLoading from 'react-loading';
 import { useDispatch, useSelector } from "react-redux";
 import { postOptions } from "../../../options";
+import { leaveTeam } from "../../../store/teams/teamsSlice";
 
 function LeaveTeam({team}) {
 
-    const {fetchApi:leaveTeam,loading}=useFetch(`http://localhost:8000/api/teams/leave/${team.id}`,postOptions)
+    const {fetchApi:leaveTeamFetch,loading}=useFetch(`http://localhost:8000/api/teams/leave/${team.id}`,postOptions)
     const user=useSelector(state=>state.auth).user    
     const dispatch=useDispatch()
     const leaveHandler =async()=>{
-    const res=await leaveTeam(); 
-      dispatch({userId:user.id, teamId:team.id})
+    const res=await leaveTeamFetch(); 
+      dispatch(leaveTeam({userId:user.id, teamId:team.id}))
     
     }
   return (  

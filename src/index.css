@@ -105,3 +105,54 @@ body::-webkit-scrollbar-thumb,.custom-scrollbar::-webkit-scrollbar-thumb {
       background-color: rgba(255, 255, 255, 0.72);
       color:gray;
     }
+
+
+		.select select,
+		.select option {
+			border: none;
+			outline: none;
+			font-size: 18px;
+			padding: 5px 55px 5px 5px;
+			background-color: rgba(255, 255, 255, 0.72);
+			color: black;
+			-webkit-appearance: none; /* for Safari */
+			margin: 0;
+			border-radius: 0;
+		}
+		.select {
+			position: relative;
+			display: inline-block;
+		}
+		.select .arrow {
+			position: absolute;
+			height: 100%;
+			width: 25px;
+			top: 0;
+			right: 0;
+			background-color: rgba(255, 255, 255, 0.72);
+      text:black;
+			pointer-events: none;
+		}
+		.select select:focus + .arrow,
+		.select select:hover + .arrow{
+			background-color: dodgerblue;
+		}
+		.select .arrow::before,
+		.select .arrow::after {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			left: 5px;
+		}
+		.select .arrow::before {
+			border-color: transparent transparent white transparent;
+			border-width: 0 8px 8px 8px;
+			top: 20%;
+		}
+		.select .arrow::after {
+			border-color: white transparent transparent transparent;
+			border-width: 8px 8px 0 8px;
+			bottom: 20%;
+		}

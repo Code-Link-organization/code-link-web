@@ -36,7 +36,7 @@ function Post({ post }) {
       <div >
       <PostContent post={post} />
       <PostDetails post={post} openLikesList={setOpenLikesList} openCommentsList={()=>setOpenCommentsList(true)} likesNumber={likesDataForPost?likesDataForPost.length:0} commentsNumber={commentsDataForPost?commentsDataForPost.length:0}  />
-      <PostActions post={post} usersLikesThisPost={existedPost?existedPost.likesData:[]} />
+      <PostActions post={post} openCommentsList={()=>setOpenCommentsList(true)} usersLikesThisPost={existedPost?existedPost.likesData:[]} />
       </div>
       {openLikesList &&<LikesList datalikes={likesDataForPost} closeLikesList={()=>setOpenLikesList(false)}/>}
      {openCommentsList&& <CommentList closeCommentsList={()=>setOpenCommentsList(false)} comments={commentsofPost?commentsofPost.commentsData:[]} id={post.id}/>}

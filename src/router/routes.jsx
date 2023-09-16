@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import ResetPasswordPage from '../Pages/authPages/ResetPasswordPage';
-import Friends from '../Components/Friends/FriendsList';
 import SelectionsSearch from '../Components/Home/HomeSideBar/SelectionsSearch';
 import CreateTeamForm from '../Components/Teams/CreateTeamForm/CreateTeamForm';
 import EditTeamForm from '../Components/Teams/EditTeamForm/EditTeamForm';
@@ -21,6 +20,7 @@ import UserProfile from '../Components/Profile/UserProfile/UserProfile';
 import EditProfile from '../Components/Profile/EditProfile/EditProfile';
 import EditPersonalInformation from '../Components/Profile/EditPersonaInformation/EditPersonalInformation';
 import InviteTeams from '../Components/Profile/InviteTeam.jsx/InviteTeams';
+import IndividualsList from '../Components/Individuals/IndividualsList';
 
  
 export const router = createBrowserRouter([
@@ -61,8 +61,8 @@ export const router = createBrowserRouter([
             element: <SelectionsSearch />
           },
           {
-            path: 'friends',
-            element: <Friends />
+            path: 'individuals',
+            element: <IndividualsList />
           }
         ]
       },
