@@ -1,5 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
-import profileImg from '../../../assets/images/posts/Ellipse 49.svg';
+import { imgLink } from '../../../api';
+import noPicture from '../../../assets/images/profile/no-profile-picture.svg';
 import { transferDate } from '../../../Functions/transferDate';
 import EditPost from './EditPost/EditPost';
 
@@ -9,7 +12,7 @@ function PostHeader({ post }) {
   return (
     <header className='flex items-center py-4 text-inter justify-between'>
       <div className='space-x-5 flex items-center'>
-        <img src={profileImg} alt='profile img' className='w-14' />
+        <img src={userData.imageUrl?`${imgLink}/${userData.imageUrl}`:noPicture} alt='profile img' className='w-14 h-14 rounded-full'  />
          <div className='flex flex-col'>
           <p className='text-base font-medium font-inter'>{user_name}</p>
           <p className='text-xs font-normal'>Front End developer</p>

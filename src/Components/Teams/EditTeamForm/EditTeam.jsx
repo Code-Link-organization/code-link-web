@@ -29,12 +29,22 @@ function EditTeam({ team, teamForm, setTeamForm }) {
       toastEmitter('All fields are required', 'error');
       return;
     }
-
-    const formData = await toFormData([
+    let formData
+    console.log(team.imageUrl,teamForm.image)
+    if(teamForm.image==team.imageUrl){
+     formData = await toFormData([
+      { name: 'name', value: teamForm.nameofTeam },
+      { name: 'description', value: teamForm.description },
+    ]);
+    }
+    else{
+       formData = await toFormData([
       { name: 'name', value: teamForm.nameofTeam },
       { name: 'description', value: teamForm.description },
       { name: 'imageUrl', value: teamForm.image },
     ]);
+
+    }
 
     const res = await editTeamFetch(formData);
 
