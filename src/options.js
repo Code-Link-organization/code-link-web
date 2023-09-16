@@ -1,11 +1,4 @@
 
-
-// Assuming you have set up your Redux store and have a slice named 'auth'
-
-// Inside your component or function where you make the HTTP request:
-
-
-// Define your request options with the user token
 export const postOptions= (userToken)=> {
 return{  method: 'POST',
   headers: {

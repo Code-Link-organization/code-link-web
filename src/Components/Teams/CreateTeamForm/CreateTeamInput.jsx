@@ -1,4 +1,3 @@
-import { useState } from "react"
 
 function CreateTeamInput({placeholder,value,setTeamForm,teamForm}) {
   const changeHandler =(e)=>{

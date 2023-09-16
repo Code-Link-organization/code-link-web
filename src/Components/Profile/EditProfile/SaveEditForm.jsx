@@ -6,7 +6,6 @@ import { postOptions } from "../../../options"
 import ReactLoading from 'react-loading';
 import { useDispatch } from "react-redux";
 import { editUser } from "../../../store/user/userSlice";
-import { imgLink } from "../../../api";
 
 function SaveEditForm({data,user}) {
     const {fetchApi:saveProfileForm,loading}=useFetch(`http://localhost:8000/api/profile/edit-profile/${user.id}`,postOptions)

@@ -19,6 +19,8 @@ import Teams from '../Pages/Teams/Teams';
 import Layout from '../Protected/Layout';
 import UserProfile from '../Components/Profile/UserProfile/UserProfile';
 import EditProfile from '../Components/Profile/EditProfile/EditProfile';
+import EditPersonalInformation from '../Components/Profile/EditPersonaInformation/EditPersonalInformation';
+import InviteTeams from '../Components/Profile/InviteTeam.jsx/InviteTeams';
 
  
 export const router = createBrowserRouter([
@@ -128,6 +130,14 @@ export const router = createBrowserRouter([
           {
             path:'/profile/edit',
             element:<EditProfile/>
+          },
+          {
+            path:'/profile/edit/personalinformation',
+            element:<EditPersonalInformation/>
+          },
+          {
+            path:'invite',
+            element:<InviteTeams/> 
           }
         ]
       }
