@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { imgLink } from '../../../api'
 import JoinRequestsList from '../JoinRequestList/JoinRequestsList'
-
+import {Navigate} from 'react-router-dom'
 function TeamsDetails() {
   const {teamId}=useParams()
   const teams=useSelector(state=>state.teams).teams;
   const team=teams.find(team=>team.id==teamId)
   const userData=useSelector(state=>state.auth).user
+  if(!team) return <Navigate to='/teams'/>
   if(team &&userData)
   return (
 

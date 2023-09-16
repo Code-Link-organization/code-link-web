@@ -17,14 +17,16 @@ function Contacts({ githubUrl, linkedinUrl, behanceUrl, facebookUrl, twitterUrl 
   return (
     <div className='pt-4'>
       <span className="border-t-[rgba(251,249,247,1)] border-t-[11px] absolute left-0 w-full"></span>
-      <h2 className='pt-5'>Contacts</h2>      
+      <h2 className='pt-5'>Contacts</h2>    
+      {contactLinks.length===0?<p className='text-center font-semibold py-2'>No Contacts</p>:
       <ul className='flex gap-3 mt-3'>
+         
         {contactLinks.map((link, index) => (
           <li key={index}>
             <a href={link.url} target="_blank" rel="noopener noreferrer"><img src={link.icon} /></a>
           </li>
         ))}
-      </ul>
+      </ul>}
     </div>
   );
 }

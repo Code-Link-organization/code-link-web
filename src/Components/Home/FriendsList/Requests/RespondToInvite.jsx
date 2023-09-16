@@ -4,16 +4,16 @@ import { api } from "../../../../api"
 import useFetch from "../../../../CustomHooks/useFetch"
 import ReactLoading from 'react-loading';
 import { postOptions } from "../../../../options";
+import {useNavigate} from 'react-router-dom'
 
 
 function RespondToInvite({response,request}) {
-    const {fetchApi:respondToJoin,loading}=useFetch(`${api}/join-requests/${response}-join/${request.id}`,postOptions)
-
+    const {fetchApi:respondToJoin,loading}=useFetch(`${api}/invite-requests/${response}-invite/${request.id}`,postOptions)
+    const navigate=useNavigate()
     const clickHandler=async()=>{
-        console.log(request.id)
         const resData=await respondToJoin()
         if(resData.ok){
-            console.log(resData)
+          navigate(0)
         }
     }
     const style=' py-2 px-4 rounded-xl text-sm font-medium transition-all duration-300 border-2 border-solid'

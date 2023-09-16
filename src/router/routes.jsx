@@ -21,6 +21,7 @@ import EditProfile from '../Components/Profile/EditProfile/EditProfile';
 import EditPersonalInformation from '../Components/Profile/EditPersonaInformation/EditPersonalInformation';
 import InviteTeams from '../Components/Profile/InviteTeam.jsx/InviteTeams';
 import IndividualsList from '../Components/Individuals/IndividualsList';
+import VisitProfile from '../Components/Profile/UserProfile/VisitProfile';
 
  
 export const router = createBrowserRouter([
@@ -140,6 +141,11 @@ export const router = createBrowserRouter([
             element:<InviteTeams/> 
           }
         ]
+      },
+      {
+       path:'/visit/:userId',
+       element:<VisitProfile/>
+
       }
     ]
   }

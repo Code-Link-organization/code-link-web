@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { api } from "../../../api"
 import { getOptions } from "../../../options"
 import ProfileHeaderDetails from "./ProfileHeader/ProfileHeadeDetails"
