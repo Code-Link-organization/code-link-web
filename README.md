@@ -30,8 +30,10 @@ Before you begin, ensure you have met the following requirements:
 3-npm start
 -Start the development server:npm run dev
 
-#Project Structure
+##Project Structure
+
 src/
+
 components: React components.
 
 pages: pages of application.
