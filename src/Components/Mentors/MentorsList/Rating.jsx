@@ -1,4 +1,6 @@
-import star from '../../../assets/images/mentors/Star.svg'
+/* eslint-disable react/prop-types */
+import star from '../../../assets/images/mentors/Star.svg';
+
 const Rating = ({ rating }) => {
   const renderStars = () => {
     const stars = [];
