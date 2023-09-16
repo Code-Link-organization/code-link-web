@@ -35,7 +35,7 @@ function IndividualsList() {
           width={40}
         /></div>:<div className='flex flex-col gap-4 w-full py-8 h-[calc(100vh_-_99px)]'>
                      { currentUsers.map(user=> <Indivdual key={user.id} name={user.name}
-               img={user.imageUrl} track={user.track} followed={true}/>)}
+               img={user.imageUrl} track={user.track} id={user.id} followed={true}/>)}
     </div>}
     </>
   )

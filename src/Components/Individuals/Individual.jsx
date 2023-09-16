@@ -1,13 +1,18 @@
 /* eslint-disable react/prop-types */
 import { imgLink } from '../../api'
 import noImage from '../../assets/images/profile/no-profile-picture.svg'
-function Indivdual({name,img,followed,track}) {
+import {useNavigate} from 'react-router-dom'
+import { useSelector } from 'react-redux'
+function Indivdual({name,img,followed,track,id}) {
+  const navigate=useNavigate()
+  const user=useSelector(state=>state.auth).user
+  if(user.id==id) return ;
   return (
     <div className='flex justify-between items-center'>
         <div className='flex items-center gap-6'>
             <img src={img?`${imgLink}/${img}`:noImage} alt="profile img" className='w-14' />
             <div>
-                <h3 className='text-base font-semibold'>{name}</h3>
+                <h3 className='text-base font-semibold cursor-pointer' onClick={()=>navigate(`/visit/${id}`)}>{name}</h3>
                 <p className='text-xs font-semibold'>{track}</p>
 
             </div>

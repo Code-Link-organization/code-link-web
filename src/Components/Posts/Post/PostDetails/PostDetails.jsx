@@ -14,7 +14,6 @@ function PostDetails({ post, openLikesList,openCommentsList,likesNumber,comments
     { count: commentsNumber, icon: commentIcon, alt: 'Comment Icon',click:openCommentsList },
     { count: post.shares_count, icon: sharIcon, alt: 'Share Icon' },
   ])
-  console.log(post)
   useEffect(()=>{
 
 

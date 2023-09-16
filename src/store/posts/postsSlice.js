@@ -6,6 +6,7 @@ import { fetchPosts } from './fetchPosts';
 
 
 
+
 const postsSlice = createSlice({
   name: 'posts',
   initialState: {
@@ -42,21 +43,11 @@ const postsSlice = createSlice({
         state.postsCommentsData.push({ postid: postId, commentsData: comments });
       }
     },
-    setLike:(state,action)=>{
-      const {postId,userId}=action.payload;
-      const post = state.postsCommentsData.find((post) => post.postid === postId);
-      // if(like){
-      // =post.likesData.filter(user=>user.user_id === userId)
-      // }
 
-
-    }
-    // Define your other reducers here
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.posts = action.payload.postData;
-      console.log(action.payload.postData)
     });
 
     builder.addCase(fetchLikesForPost.fulfilled, (state, action) => {

@@ -16,6 +16,7 @@ function CommentList({ closeCommentsList, comments, id }) {
             userName={comment.user_name}
             content={comment.content}
             date={comment.created_at}
+            id={comment.user_id}
           />
         ))}
       </div>

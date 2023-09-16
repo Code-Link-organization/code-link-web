@@ -6,14 +6,14 @@ import ReactLoading from 'react-loading';
 import {useNavigate} from 'react-router-dom'
 import deleteAccountIcon from '../../../assets/images/profile/sidebar/deleteAccount.svg'
 
-function DeleteAccount({data,user}) {
+function DeleteAccount({user}) {
     const {fetchApi:deleteAccount,loading}=useFetch(`http://localhost:8000/api/profile/edit-profile/${user.id}`,postOptions)
     const navigate=useNavigate()
     
     const deleteHandler =async ()=>{
 
        if(confirm('are you sure you want to delete')){
-        const resData=await DeleteAccount()
+        const resData=await deleteAccount()
         if(resData.ok){
             localStorage.clear()
             navigate('/')

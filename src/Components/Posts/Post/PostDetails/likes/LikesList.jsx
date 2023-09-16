@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
-import { getFriendsFakeData } from '../../../../../Functions/getFriendsFakeData'
 import closeImg from '../../../../../assets/images/home/icons8-close-50 5.svg'
 import LikeListItem from './LikeListItem'
 // eslint-disable-next-line no-unused-vars
 function LikesList({datalikes, closeLikesList}) {
-  const fakeData=getFriendsFakeData(10)
-  console.log(datalikes )
   return (
     <div className="absolute top-[35px] w-full h-[calc(100%_-_50px)] overflow-hidden shadow-lg scroll-y  overflow-y-auto custom-scrollbar rounded-lg  bg-[rgba(252,250,248,1)]">
         <div className='border-b-[1.5px] border-b-solid border-b-[rgba(227,227,227,1)]'>
@@ -16,7 +13,7 @@ function LikesList({datalikes, closeLikesList}) {
         </div>
 
         <div className='p-6 flex flex-col gap-6'>
-                    {datalikes &&datalikes[0].likesData.map((user)=> <LikeListItem key={user.user_id} name={user.user_name}
+                    {datalikes &&datalikes[0].likesData.map((user)=> <LikeListItem key={user.user_id} id={user.user_id} name={user.user_name}
                img={user.user_imageUrl} track={'frontend'} followed={true}/>)}
 
         </div>
