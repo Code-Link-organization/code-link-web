@@ -38,7 +38,7 @@ components: React components.
 
 pages: pages of application.
 
-router: routers of application.
+router: routes of application.
 
 assets:images of application.
 
