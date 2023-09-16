@@ -33,16 +33,28 @@ Before you begin, ensure you have met the following requirements:
 #Project Structure
 src/
 components: React components.
+
 pages: pages of application.
+
 routes: routers of application.
+
 assets:images of application.
+
 App.jsx: The main application component.
+
 main.jsx: Application entry point.
+
 functions:contain main functions in application.
-customhooks:contain custom hooks used in application.
+
+customhooks:contain custom hooks used in application.  
+
+
 api:contains base url of api.
+
 options:contains get and post options
+
 store:contains store of state managment
+
 
 
 
