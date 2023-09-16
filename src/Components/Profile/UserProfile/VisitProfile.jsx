@@ -7,6 +7,7 @@ import { getOptions } from "../../../options"
 import ProfileHeaderDetails from "./ProfileHeader/ProfileHeadeDetails"
 import ProfileHeader from "./ProfileHeader/ProfileHeader"
 import ReactLoading from 'react-loading';
+import RequireAuth from "../../../Protected/RequireAuth"
 
 
 function VisitProfile() {
@@ -26,7 +27,8 @@ function VisitProfile() {
     },[userId,user])
     if(currentUser){
   return (
-     <div className=" mx-auto w-[496px]">
+     
+    <RequireAuth>    <div className=" mx-auto w-[496px]">
     {!loading ? <div className="w-full ">
         <ProfileHeader  user={currentUser}/> 
               <ProfileHeaderDetails visit={true} user={currentUser}/>
@@ -37,7 +39,8 @@ function VisitProfile() {
           height={40}
           width={40}
         /></div>}
-    </div>
+    </div></RequireAuth>
+ 
   )
 }}
 
