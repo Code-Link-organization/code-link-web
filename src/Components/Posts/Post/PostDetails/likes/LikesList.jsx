@@ -13,7 +13,7 @@ function LikesList({datalikes, closeLikesList}) {
         </div>
 
         <div className='p-6 flex flex-col gap-6'>
-                    {datalikes &&datalikes[0].likesData.map((user)=> <LikeListItem key={user.user_id} id={user.user_id} name={user.user_name}
+                    {datalikes &&datalikes[0]?.likesData.map((user)=> <LikeListItem key={user.user_id} id={user.user_id} name={user.user_name}
                img={user.user_imageUrl} track={'frontend'} followed={true}/>)}
 
         </div>

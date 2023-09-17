@@ -1,7 +1,7 @@
-import  { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { setSavedUser } from '../../store/user/userSlice';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { setSavedUser } from "../../store/user/userSlice";
 
 function StartPageNav() {
   const userData = useSelector((state) => state.auth);

@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import deleteAccountIcon from '../../../assets/images/profile/sidebar/deleteAccount.svg'
 
 function DeleteAccount({user}) {
-    const {fetchApi:deleteAccount,loading}=useFetch(`http://localhost:8000/api/profile/edit-profile/${user.id}`,postOptions)
+    const {fetchApi:deleteAccount,loading}=useFetch(`http://localhost:8000/api/profile/delete-account/${user.id}`,postOptions)
     const navigate=useNavigate()
     
     const deleteHandler =async ()=>{
