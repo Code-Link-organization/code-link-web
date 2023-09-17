@@ -1,4 +1,6 @@
-![Project Logo](./src/assets/react.svg)  # CodeLink
+![Project Logo](./src/assets/react.svg)  
+# CodeLink
+
 
 
 
