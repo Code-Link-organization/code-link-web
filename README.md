@@ -18,7 +18,7 @@ Before you begin, ensure you have met the following requirements:
 
 - Node.js and npm installed on your development machine.
 
-## Features
+## Main Packages
 
 - **React**: A JavaScript library for building user interfaces.
 - **React Router**:  routing for React applications and make application spa.
